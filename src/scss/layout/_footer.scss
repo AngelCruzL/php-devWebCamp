@@ -1,0 +1,43 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.footer {
+	margin-block-start: 5rem;
+	padding-block-start: 3rem;
+	background-color: v.$colorPrimary;
+	color: v.$colorWhite;
+
+	&__grid {
+		@include m.container;
+		@include m.respond(tablet) {
+			@include m.grid(2, 3rem);
+		}
+	}
+
+	&__logo {
+		@include m.logo;
+		@include m.text-fluid(2rem, 4rem);
+	}
+
+	&__text {
+		line-height: 2;
+		text-align: center;
+
+		@include m.respond(tablet) {
+			text-align: left;
+		}
+	}
+
+	&__copyright {
+		margin-block: 3rem 0;
+		padding-block: 2rem;
+		background-color: darken(v.$colorPrimary, 10%);
+		font-size: 1.4rem;
+		font-weight: v.$fontWeightBlack;
+		text-align: center;
+
+		&--regular {
+			font-weight: v.$fontWeightRegular;
+		}
+	}
+}
