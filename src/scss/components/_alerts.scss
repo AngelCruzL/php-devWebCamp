@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.alert {
+	margin-block: 1rem;
+	padding-block: 1.5rem;
+	padding-inline: 3rem 1.5rem;
+	font-size: 1.2rem;
+	font-weight: v.$fontWeightBold;
+	text-transform: uppercase;
+
+	&__success {
+		border-inline-start: 0.5rem solid v.$colorGreen;
+		background-color: lighten(v.$colorGreen, 40%);
+		color: v.$colorGreen;
+	}
+
+	&__error {
+		border-inline-start: 0.5rem solid v.$colorRed;
+		background-color: lighten(v.$colorRed, 60%);
+		color: v.$colorRed;
+	}
+}
