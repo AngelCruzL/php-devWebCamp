@@ -1,0 +1,32 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.form {
+	display: flex;
+	flex-direction: column;
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin-block: 1.5rem;
+	}
+
+	&__label {
+		display: block;
+		color: rgba(v.$colorBlack, 0.8);
+		font-size: 1.8rem;
+	}
+
+	&__input {
+		padding: 1rem;
+		border: 1px solid darken(v.$colorGreyLight, 20);
+		border-radius: 0.5rem;
+	}
+
+	&__submit {
+		@include m.button(v.$colorPrimary, v.$colorWhite);
+		align-self: flex-start;
+		inline-size: auto;
+	}
+}
