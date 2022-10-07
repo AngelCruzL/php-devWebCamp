@@ -91,3 +91,51 @@
 		text-align: left;
 	}
 }
+
+@mixin social-menu($color, $size) {
+	&__link {
+		&::before {
+			display: inline-block;
+			color: $color;
+			font-family: 'Font Awesome 6 Brands';
+			font-size: $size;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			text-rendering: auto;
+		}
+
+		&[href*="https://facebook.com"]::before
+		{
+			content: '\f39e';
+		}
+
+		&[href*="https://github.com"]::before
+		{
+			content: '\f09b';
+		}
+
+		&[href*="https://tiktok.com"]::before
+		{
+			content: '\e07b';
+		}
+
+		&[href*="https://instagram.com"]::before
+		{
+			content: '\f16d';
+		}
+
+		&[href*="https://youtube.com"]::before
+		{
+			content: '\f167';
+		}
+
+		&[href*="https://twitter.com"]::before
+		{
+			content: '\f099';
+		}
+	}
+
+	&__hide {
+		display: none;
+	}
+}
