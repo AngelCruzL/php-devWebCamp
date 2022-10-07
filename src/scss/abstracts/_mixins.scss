@@ -48,3 +48,25 @@
 		background-color: darken($backgroundColor, 10%);
 	}
 }
+
+@mixin container {
+	margin-inline: auto;
+	inline-size: min(95%, 120rem);
+}
+
+@mixin container-sm {
+	margin-inline: auto;
+	inline-size: min(95%, 60rem);
+}
+
+@mixin headings {
+	margin-block: 2rem;
+	font-family: var.$fontPrimary;
+	font-weight: var.$fontWeightBlack;
+}
+
+@mixin page-name {
+	@include headings;
+	margin-block: 6rem 3rem;
+	text-align: center;
+}
