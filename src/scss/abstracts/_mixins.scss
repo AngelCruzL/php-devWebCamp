@@ -80,3 +80,14 @@
 	background-clip: text;
 	color: transparent;
 }
+
+@mixin logo {
+	margin-block-end: 2rem;
+	color: var.$colorWhite;
+	text-align: center;
+
+	@include respond(tablet) {
+		margin-block: unset;
+		text-align: left;
+	}
+}

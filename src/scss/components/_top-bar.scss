@@ -1,0 +1,22 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.topBar {
+	background-color: v.$colorPrimary;
+
+	&__content {
+		@include m.container;
+		display: flex;
+		flex-direction: column;
+
+		@include m.respond(desktop) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	&__logo {
+		@include m.logo;
+	}
+}

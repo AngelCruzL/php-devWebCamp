@@ -17,3 +17,18 @@
 		</div>
 	</div>
 </header>
+
+<div class="topBar">
+	<div class="topBar__content">
+		<a href="/">
+			<h2 class="topBar__logo">&#60;DevWebCamp/></h2>
+		</a>
+
+		<nav class="navbar">
+			<a href="/devwebcamp" class="navbar__link">Evento</a>
+			<a href="/paquetes" class="navbar__link">Paquetes</a>
+			<a href="/workshops-conferencias" class="navbar__link">Workshops / Conferencias</a>
+			<a href="/registro" class="navbar__link">Comprar Pase</a>
+		</nav>
+	</div>
+</div>

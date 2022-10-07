@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.navbar {
+	display: flex;
+	flex-direction: column;
+
+	@include m.respond(desktop) {
+		flex-direction: row;
+	}
+
+	&__link {
+		padding-block: 2rem;
+		padding-inline: 2rem;
+		color: v.$colorWhite;
+		font-size: 2.2rem;
+		font-weight: v.$fontWeightBlack;
+		text-transform: uppercase;
+		text-align: center;
+
+		&:hover {
+			background-color: v.$colorWhite;
+			color: v.$colorPrimary;
+		}
+	}
+}
