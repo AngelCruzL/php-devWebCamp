@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body {
+	font-family: v.$fontPrimary;
+	font-size: 1.8rem;
+}
+
+img,
+picture {
+	display: block;
+	block-size: auto;
+	max-inline-size: 100%;
+}
+
+a {
+	text-decoration: none;
+}

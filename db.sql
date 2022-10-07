@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS devwebcamp;
+
+USE devwebcamp;
+
+CREATE TABLE IF NOT EXISTS users (
+	id INT AUTO_INCREMENT,
+	first_name VARCHAR(40) NOT NULL,
+	last_name VARCHAR(40) NOT NULL,
+	email VARCHAR(40) NOT NULL,
+	password CHAR(60) NOT NULL,
+	token CHAR(13) DEFAULT NULL,
+	is_confirmed TINYINT(1) NOT NULL DEFAULT 0,
+	is_admin TINYINT(1) NOT NULL DEFAULT 0,
+	PRIMARY KEY (id)
+);
