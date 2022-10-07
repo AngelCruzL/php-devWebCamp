@@ -51,7 +51,7 @@
 
 @mixin container {
 	margin-inline: auto;
-	inline-size: min(95%, 120rem);
+	inline-size: min(95%, 140rem);
 }
 
 @mixin container-sm {
@@ -69,4 +69,14 @@
 	@include headings;
 	margin-block: 6rem 3rem;
 	text-align: center;
+}
+
+@mixin text-fluid($min, $max) {
+	font-size: clamp($min, 10vw - 0.8rem, $max);
+}
+
+@mixin text-gradient($colorBegin, $colorFinal) {
+	background: linear-gradient(to right, $colorBegin, $colorFinal);
+	background-clip: text;
+	color: transparent;
 }

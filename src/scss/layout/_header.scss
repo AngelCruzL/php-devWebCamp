@@ -1,0 +1,88 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.header {
+	min-block-size: 60rem;
+	background-image: url(../img/grafico.svg), url(../img/grafico.svg),
+		linear-gradient(to right, rgba(v.$colorBlack, 1), rgba(v.$colorBlack, 0.5)),
+		image-set(
+			url(../img/header.avif) 1x,
+			url(../img/header.webp) 1x,
+			url(../img/header.jpg) 1x
+		);
+	background-repeat: no-repeat;
+	background-size: 400px, 400px, cover, cover;
+	background-position: top left, bottom right, center, center;
+
+	&__container {
+		@include m.container;
+	}
+
+	&__navigation {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		padding-block: 5rem;
+
+		@include m.respond(tablet) {
+			justify-content: flex-end;
+		}
+	}
+
+	&__link {
+		color: v.$colorWhite;
+		font-size: 1.4rem;
+		font-weight: v.$fontWeightBold;
+		text-transform: uppercase;
+
+		&:hover {
+			color: v.$colorPrimary;
+		}
+	}
+
+	&__content {
+		padding-block-start: 10rem;
+
+		@include m.respond(tablet) {
+			padding-block-start: 5rem;
+		}
+	}
+
+	&__logo {
+		@include m.text-fluid(2rem, 8rem);
+		@include m.text-gradient(v.$colorPrimary, v.$colorSecondary);
+		text-align: center;
+
+		@include m.respond(tablet) {
+			display: inline-block;
+			text-align: left;
+		}
+	}
+
+	&__text {
+		margin-block: 2rem;
+		color: v.$colorWhite;
+		font-size: 3rem;
+		font-weight: v.$fontWeightBold;
+		text-align: center;
+		text-transform: uppercase;
+
+		@include m.respond(tablet) {
+			text-align: left;
+		}
+
+		&--modality {
+			font-size: 2rem;
+		}
+	}
+
+	&__button {
+		@include m.button(v.$colorSecondary, v.$colorWhite);
+		margin-block: 2rem;
+		text-transform: uppercase;
+
+		@include m.respond(tablet) {
+			inline-size: auto;
+		}
+	}
+}
