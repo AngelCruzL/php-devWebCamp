@@ -19,8 +19,8 @@ class User extends ActiveRecord
 	public function __construct($args = [])
 	{
 		$this->id = $args['id'] ?? null;
-		$this->first_name = $args['first_name'] ?? '';
-		$this->last_name = $args['last_name'] ?? '';
+		$this->first_name = $args['firstName'] ?? '';
+		$this->last_name = $args['lastName'] ?? '';
 		$this->email = $args['email'] ?? '';
 		$this->password = $args['password'] ?? '';
 		$this->passwordConfirm = $args['passwordConfirm'] ?? '';
