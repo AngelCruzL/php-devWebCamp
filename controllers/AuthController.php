@@ -166,13 +166,13 @@ class AuthController
 		$user = User::where('token', $token);
 
 		if (empty($user)) {
-			User::setAlert('error', 'Token no válido');
+			User::setAlert('error', 'Token no válido, la cuenta no pudo ser confirmada');
 		} else {
 			$user->token = null;
 			$user->is_confirmed = 1;
 			unset($user->passwordConfirm);
 			$user->save();
-			User::setAlert('success', 'Cuenta confirmada correctamente');
+			User::setAlert('success', 'Cuenta confirmada exitosamente');
 		}
 
 		$router->render('auth/confirm-account', [
