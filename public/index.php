@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\AuthController;
+use Controllers\DashboardController;
 use MVC\Router;
 
 $router = new Router();
@@ -22,5 +23,7 @@ $router->post('/restablecer', [AuthController::class, 'resetPassword']);
 
 $router->get('/mensaje', [AuthController::class, 'message']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmAccount']);
+
+$router->get('/admin/dashboard', [DashboardController::class, 'index']);
 
 $router->checkRoutes();
