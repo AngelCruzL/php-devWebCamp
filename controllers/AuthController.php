@@ -71,7 +71,7 @@ class AuthController
 					unset($user->passwordConfirm);
 					$user->generateToken();
 					$result = $user->save();
-					$email = new Email($user->email, $user->name, $user->token);
+					$email = new Email($user->email, $user->first_name, $user->token);
 					$email->sendConfirmationEmail();
 
 					if ($result) header('Location: /mensaje');
