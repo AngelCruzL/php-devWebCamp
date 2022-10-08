@@ -27,7 +27,10 @@ class AuthController
 						$_SESSION['firstName'] = $user->first_name;
 						$_SESSION['lastName'] = $user->last_name;
 						$_SESSION['email'] = $user->email;
-						$_SESSION['isAdmin'] = $user->admin ?? null;
+						$_SESSION['isAdmin'] = $user->is_admin ?? null;
+
+						if ($user->is_admin) header('Location: /admin/dashboard');
+						else header('Location: /finalizar-registro');
 					} else {
 						User::setAlert('error', 'La contraseña es incorrecta');
 					}
@@ -39,7 +42,7 @@ class AuthController
 
 		$router->render('auth/login', [
 			'pageTitle' => 'Iniciar Sesión',
-			'alertas' => $alerts ?? []
+			'alerts' => $alerts ?? []
 		]);
 	}
 

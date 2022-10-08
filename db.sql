@@ -13,3 +13,26 @@ CREATE TABLE IF NOT EXISTS users (
 	is_admin TINYINT(1) NOT NULL DEFAULT 0,
 	PRIMARY KEY (id)
 );
+
+INSERT INTO users (
+	first_name,
+	last_name,
+	email,
+	password,
+	is_confirmed,
+	is_admin
+) VALUES (
+	'Ángel',
+	'Cruz',
+	'admin@test.com',
+	'$2y$10$yGtTR.0evE/4AgIiun/u1eTGJBfnTgDU7MlrZLAMmXkANsYxzSpEG',
+	1,
+	1
+), (
+	'Luis',
+	'Lara',
+	'client@test.com',
+	'$2y$10$yGtTR.0evE/4AgIiun/u1eTGJBfnTgDU7MlrZLAMmXkANsYxzSpEG',
+	1,
+	0
+);
