@@ -99,7 +99,7 @@ class AuthController
 					$userExists->generateToken();
 					unset($userExists->passwordConfirm);
 					$userExists->save();
-					$email = new Email($userExists->email, $userExists->name, $userExists->token);
+					$email = new Email($userExists->email, $userExists->first_name, $userExists->token);
 					$email->sendResetPasswordEmail();
 					User::setAlert('success', 'Hemos enviado un correo electrónico con las instrucciones para restablecer tu contraseña');
 				} else {
@@ -138,7 +138,7 @@ class AuthController
 				$user->token = null;
 				$result = $user->save();
 
-				if ($result) header('Location: /');
+				if ($result) header('Location: /login');
 			}
 		}
 
