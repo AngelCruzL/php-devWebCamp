@@ -30,14 +30,7 @@
 	}
 
 	&__link {
-		color: v.$colorWhite;
-		font-size: 1.4rem;
-		font-weight: v.$fontWeightBold;
-		text-transform: uppercase;
-
-		&:hover {
-			color: v.$colorPrimary;
-		}
+		@include m.link;
 	}
 
 	&__content {

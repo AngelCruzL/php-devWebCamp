@@ -139,3 +139,16 @@
 		display: none;
 	}
 }
+
+@mixin link {
+	all: unset;
+	color: var.$colorWhite;
+	font-size: 1.4rem;
+	font-weight: var.$fontWeightBold;
+	text-transform: uppercase;
+
+	&:hover {
+		cursor: pointer;
+		color: var.$colorPrimary;
+	}
+}
