@@ -1,0 +1,43 @@
+@use '../../abstracts/variables' as v;
+@use '../../abstracts/mixins' as m;
+
+.dashboard {
+	display: flex;
+	flex-direction: column;
+	block-size: 100%;
+	background-color: v.$colorGreyLight;
+
+	&__header {
+		padding-block: 2rem;
+		padding-inline: 2rem;
+		background-color: v.$colorGreyDark;
+
+		&Grid {
+			display: flex;
+			flex-direction: column;
+
+			@include m.respond(tablet) {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			}
+		}
+	}
+
+	&__logo {
+		@include m.logo;
+		@include m.text-fluid(2rem, 3rem);
+	}
+
+	&__nav {
+	}
+
+	&__form {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__submit--logout {
+		@include m.link;
+	}
+}
