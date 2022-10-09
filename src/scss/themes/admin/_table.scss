@@ -1,0 +1,56 @@
+@use '../../abstracts/variables' as v;
+@use '../../abstracts/mixins' as m;
+
+.table {
+	inline-size: 100%;
+	border-collapse: collapse;
+
+	&__thead {
+		background-color: v.$colorGreyDark;
+		color: v.$colorWhite;
+	}
+
+	&__th {
+		padding-block: 1rem;
+		padding-inline: 2rem;
+		text-align: left;
+	}
+
+	&__tr {
+		&:nth-child(even) {
+			background-color: v.$colorGreyLight;
+		}
+	}
+
+	&__td {
+		padding-block: 1.5rem;
+		padding-inline: 1rem;
+
+		&--actions {
+			@extend .table__td;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			gap: 2rem;
+		}
+	}
+
+	&__action {
+		all: unset;
+		font-size: 1.4rem;
+		font-weight: v.$fontWeightBold;
+		text-transform: uppercase;
+
+		&--edit {
+			color: v.$colorPrimary;
+		}
+
+		&--delete {
+			color: v.$colorRed;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

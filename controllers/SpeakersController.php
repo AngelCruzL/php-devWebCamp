@@ -10,8 +10,11 @@ class SpeakersController
 {
 	public static function index(Router $router)
 	{
+		$speakers = Speaker::all();
+
 		$router->render('admin/speakers/index', [
-			'pageTitle' => 'Ponentes / Conferencistas'
+			'pageTitle' => 'Ponentes / Conferencistas',
+			'speakers' => $speakers
 		]);
 	}
 
