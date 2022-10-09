@@ -42,6 +42,7 @@
 	}
 
 	&__grid {
+		overflow-y: auto;
 		display: flex;
 		flex: 1;
 	}
@@ -88,6 +89,7 @@
 	}
 
 	&__content {
+		overflow-y: scroll;
 		padding-block: 1rem 3rem;
 		padding-inline: 1rem;
 		inline-size: 100%;
