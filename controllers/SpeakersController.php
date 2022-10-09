@@ -31,8 +31,17 @@ class SpeakersController
 				$_POST['image'] = $image_name;
 			}
 
+			$_POST['social_networks'] = json_encode($_POST['social_networks'], JSON_UNESCAPED_SLASHES);
 			$speaker->sync($_POST);
 			$alerts = $speaker->validateSpeaker();
+
+			if (empty($alerts)) {
+				$image_png->save($IMAGE_DIR . '/' . $image_name . '.png');
+				$image_webp->save($IMAGE_DIR . '/' . $image_name . '.webp');
+				$result = $speaker->save();
+
+				if ($result) header('Location: /admin/ponentes');
+			}
 		}
 
 		$router->render('admin/speakers/create', [
