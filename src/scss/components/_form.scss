@@ -66,6 +66,10 @@
 		}
 	}
 
+	&__list {
+		@include m.tags;
+	}
+
 	&__submit {
 		@include m.button(v.$colorPrimary, v.$colorWhite);
 		align-self: flex-start;

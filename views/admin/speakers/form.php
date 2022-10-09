@@ -35,9 +35,8 @@
 		<input type="text" class="form__input" id="tags_input" placeholder="Ejemplo: Node.js, PHP, CSS, Laravel, UX / UI">
 	</div>
 
-	<div id="tags" class="form__list">
-		<input type="hidden" name="tags" value="<?php echo $speaker->tags ?? ''; ?>">
-	</div>
+	<div id="tags" class="form__list"></div>
+	<input type="hidden" name="tags" value="<?php echo $speaker->tags ?? ''; ?>">
 </fieldset>
 
 <fieldset class="form__fieldset">
