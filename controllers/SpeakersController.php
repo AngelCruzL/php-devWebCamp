@@ -102,4 +102,15 @@ class SpeakersController
 			'alerts' => $alerts ?? []
 		]);
 	}
+
+	public static function deleteSpeaker()
+	{
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$speaker = Speaker::find($_POST['id']);
+			if (!isset($speaker)) header('Location: /admin/ponentes');
+
+			$result = $speaker->delete();
+			if ($result) header('Location: /admin/ponentes');
+		}
+	}
 }
