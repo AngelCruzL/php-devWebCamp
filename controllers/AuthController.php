@@ -20,7 +20,6 @@ class AuthController
 				if (!$user || !$user->is_confirmed) {
 					User::setAlert('error', 'El usuario no existe o no está confirmado');
 				} else {
-					// El Usuario existe
 					if (password_verify($_POST['password'], $user->password)) {
 						session_start();
 						$_SESSION['userId'] = $user->id;

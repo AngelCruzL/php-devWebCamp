@@ -10,6 +10,8 @@ class SpeakersController
 {
 	public static function index(Router $router)
 	{
+		if (!is_admin()) header('Location: /login');
+
 		$speakers = Speaker::all();
 
 		$router->render('admin/speakers/index', [
@@ -20,9 +22,13 @@ class SpeakersController
 
 	public static function createSpeaker(Router $router)
 	{
+		if (!is_admin()) header('Location: /login');
+
 		$speaker = new Speaker;
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (!is_admin()) header('Location: /login');
+
 			if (!empty($_FILES['image']['tmp_name'])) {
 				$IMAGE_DIR = '../public/img/speakers';
 
@@ -57,6 +63,8 @@ class SpeakersController
 
 	public static function editSpeaker(Router $router)
 	{
+		if (!is_admin()) header('Location: /login');
+
 		$id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
 		if (!$id) header('Location: /admin/ponentes');
 
@@ -66,6 +74,8 @@ class SpeakersController
 		$speaker->current_image = $speaker->image;
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (!is_admin()) header('Location: /login');
+
 			if (!empty($_FILES['image']['tmp_name'])) {
 				$IMAGE_DIR = '../public/img/speakers';
 
@@ -106,6 +116,8 @@ class SpeakersController
 	public static function deleteSpeaker()
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (!is_admin()) header('Location: /login');
+
 			$speaker = Speaker::find($_POST['id']);
 			if (!isset($speaker)) header('Location: /admin/ponentes');
 

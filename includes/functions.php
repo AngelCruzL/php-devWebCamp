@@ -25,3 +25,15 @@ function get_current_page($path): bool
 {
 	return str_contains($_SERVER['PATH_INFO'], $path);
 }
+
+function is_authenticated(): bool
+{
+	session_start();
+	return isset($_SESSION['userId']) && !empty($_SESSION);
+}
+
+function is_admin(): bool
+{
+	session_start();
+	return isset($_SESSION['isAdmin']) && !empty($_SESSION['isAdmin']);
+}
