@@ -24,6 +24,25 @@
 		margin-block: 1.5rem;
 	}
 
+	&__container-icon {
+		overflow: hidden;
+		display: flex;
+		border-radius: 0.5rem;
+	}
+
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		inline-size: 4rem;
+		background-color: v.$colorGreyDark;
+
+		i {
+			color: v.$colorWhite;
+			font-size: 2rem;
+		}
+	}
+
 	&__label {
 		display: block;
 		color: rgba(v.$colorBlack, 0.8);
@@ -34,6 +53,17 @@
 		padding: 1rem;
 		border: 1px solid darken(v.$colorGreyLight, 20);
 		border-radius: 0.5rem;
+
+		&--file {
+			border: none;
+		}
+
+		&--socials {
+			@extend .form__input;
+			flex: 1;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
 	}
 
 	&__submit {
