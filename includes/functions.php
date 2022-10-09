@@ -20,3 +20,8 @@ function s($html): string
 {
 	return htmlspecialchars($html, ENT_QUOTES, 'UTF-8');
 }
+
+function get_current_page($path): bool
+{
+	return str_contains($_SERVER['PATH_INFO'], $path);
+}
