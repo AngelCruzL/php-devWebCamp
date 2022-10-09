@@ -26,7 +26,7 @@
 		<input type="file" class="form__input form__input--file" id="image" name="image">
 	</div>
 
-	<?php if (isset($speaker->currant_image)) : ?>
+	<?php if (isset($speaker->current_image)) : ?>
 		<p class="form__text">Imagen Actual:</p>
 		<div class="form__image">
 			<picture>
