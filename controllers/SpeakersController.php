@@ -12,4 +12,11 @@ class SpeakersController
 			'pageTitle' => 'Ponentes / Conferencistas'
 		]);
 	}
+
+	public static function createSpeaker(Router $router)
+	{
+		$router->render('admin/speakers/create', [
+			'pageTitle' => 'Registrar Ponente'
+		]);
+	}
 }

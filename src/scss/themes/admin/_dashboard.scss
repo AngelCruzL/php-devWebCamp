@@ -96,4 +96,21 @@
 			padding-inline: 5rem;
 		}
 	}
+
+	&__containerButton {
+		@include m.respond(tablet) {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+
+	&__button {
+		@include m.button(v.$colorPrimary, v.$colorWhite);
+		font-size: 1.4rem;
+		text-transform: uppercase;
+
+		@include m.respond(tablet) {
+			inline-size: auto;
+		}
+	}
 }
