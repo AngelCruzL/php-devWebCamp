@@ -53,4 +53,21 @@ class SpeakersController
 			'alerts' => $alerts ?? []
 		]);
 	}
+
+	public static function editSpeaker(Router $router)
+	{
+		$id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+		if (!$id) header('Location: /admin/ponentes');
+
+		$speaker = Speaker::find($id);
+		if (!$speaker) header('Location: /admin/ponentes');
+
+		$speaker->currant_image = $speaker->image;
+
+		$router->render('admin/speakers/edit', [
+			'pageTitle' => 'Editar Ponente',
+			'speaker' => $speaker,
+			'alerts' => $alerts ?? []
+		]);
+	}
 }

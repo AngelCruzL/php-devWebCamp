@@ -25,6 +25,17 @@
 		<label for="image" class="form__label">Imagen</label>
 		<input type="file" class="form__input form__input--file" id="image" name="image">
 	</div>
+
+	<?php if (isset($speaker->currant_image)) : ?>
+		<p class="form__text">Imagen Actual:</p>
+		<div class="form__image">
+			<picture>
+				<source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $speaker->image; ?>.webp" type="image/webp">
+				<source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $speaker->image; ?>.png" type="image/png">
+				<img src="<?php echo $_ENV['HOST'] . '/img/speakers/' . $speaker->image; ?>.png" alt="Imagen del ponente">
+			</picture>
+		</div>
+	<?php endif; ?>
 </fieldset>
 
 <fieldset class="form__fieldset">

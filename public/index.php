@@ -33,6 +33,8 @@ $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/ponentes', [SpeakersController::class, 'index']);
 $router->get('/admin/ponentes/crear', [SpeakersController::class, 'createSpeaker']);
 $router->post('/admin/ponentes/crear', [SpeakersController::class, 'createSpeaker']);
+$router->get('/admin/ponentes/editar', [SpeakersController::class, 'editSpeaker']);
+$router->post('/admin/ponentes/editar', [SpeakersController::class, 'editSpeaker']);
 
 $router->get('/admin/eventos', [EventsController::class, 'index']);
 

@@ -66,6 +66,14 @@
 		}
 	}
 
+	&__text {
+		margin-block-start: 3rem;
+	}
+
+	&__image {
+		max-inline-size: 20rem;
+	}
+
 	&__list {
 		@include m.tags;
 	}
