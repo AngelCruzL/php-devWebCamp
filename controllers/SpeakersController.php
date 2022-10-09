@@ -50,6 +50,7 @@ class SpeakersController
 		$router->render('admin/speakers/create', [
 			'pageTitle' => 'Registrar Ponente',
 			'speaker' => $speaker,
+			'social_networks' => json_decode($speaker->social_networks),
 			'alerts' => $alerts ?? []
 		]);
 	}
@@ -67,6 +68,7 @@ class SpeakersController
 		$router->render('admin/speakers/edit', [
 			'pageTitle' => 'Editar Ponente',
 			'speaker' => $speaker,
+			'social_networks' => json_decode($speaker->social_networks),
 			'alerts' => $alerts ?? []
 		]);
 	}

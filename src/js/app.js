@@ -4,7 +4,7 @@
 	const $tagsInputHidden = document.querySelector('[name="tags"]');
 	let tags = [];
 
-	if ($tagsInputHidden.value !== '') {
+	if ($tagsInputHidden && $tagsInputHidden.value !== '') {
 		tags = $tagsInputHidden.value.split(',');
 		showTags();
 	}
