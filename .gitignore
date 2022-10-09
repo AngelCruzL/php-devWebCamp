@@ -11,5 +11,6 @@ images
 package-lock.json
 yarn.lock
 *.log
+public/img
 
 /vendor/

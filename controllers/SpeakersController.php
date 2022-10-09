@@ -2,8 +2,9 @@
 
 namespace Controllers;
 
-use Model\Speaker;
 use MVC\Router;
+use Model\Speaker;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class SpeakersController
 {
@@ -19,6 +20,17 @@ class SpeakersController
 		$speaker = new Speaker;
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (!empty($_FILES['image']['tmp_name'])) {
+				$IMAGE_DIR = '../public/img/speakers';
+
+				if (!is_dir($IMAGE_DIR)) mkdir($IMAGE_DIR, 0755, true);
+
+				$image_png = Image::make($_FILES['image']['tmp_name'])->fit(800, 800)->encode('png', 80);
+				$image_webp = Image::make($_FILES['image']['tmp_name'])->fit(800, 800)->encode('webp', 80);
+				$image_name = md5(uniqid(rand(), true));
+				$_POST['image'] = $image_name;
+			}
+
 			$speaker->sync($_POST);
 			$alerts = $speaker->validateSpeaker();
 		}
