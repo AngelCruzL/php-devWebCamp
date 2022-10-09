@@ -159,7 +159,7 @@
 }
 
 @mixin shadow {
-	box-shadow: rgba(50, 50, 93, 0.25), rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+	box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 8%);
 }
 
 @mixin reset-list {

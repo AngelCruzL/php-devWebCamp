@@ -100,10 +100,11 @@
 	}
 
 	&__containerButton {
+		margin-block-end: 5rem;
+
 		@include m.respond(tablet) {
 			display: flex;
 			justify-content: flex-end;
-			margin-block-end: 5rem;
 		}
 	}
 
