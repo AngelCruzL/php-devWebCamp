@@ -6,3 +6,13 @@
 		Volver
 	</a>
 </div>
+
+<div class="dashboard__form">
+	<?php include_once __DIR__ . '/../../templates/alerts.php'; ?>
+
+	<form enctype="multipart/form-data" class="form">
+		<?php include_once __DIR__ .  '/form.php' ?>
+
+		<input type="submit" value="Registrar Ponente" class="form__submit form__submit--register">
+	</form>
+</div>

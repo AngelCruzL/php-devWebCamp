@@ -54,6 +54,11 @@
 	inline-size: min(95%, 140rem);
 }
 
+@mixin container-md {
+	margin-inline: auto;
+	inline-size: min(95%, 80rem);
+}
+
 @mixin container-sm {
 	margin-inline: auto;
 	inline-size: min(95%, 60rem);
@@ -151,4 +156,8 @@
 		cursor: pointer;
 		color: var.$colorPrimary;
 	}
+}
+
+@mixin shadow {
+	box-shadow: rgba(50, 50, 93, 0.25), rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }

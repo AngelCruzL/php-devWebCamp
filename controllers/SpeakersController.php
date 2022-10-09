@@ -16,7 +16,8 @@ class SpeakersController
 	public static function createSpeaker(Router $router)
 	{
 		$router->render('admin/speakers/create', [
-			'pageTitle' => 'Registrar Ponente'
+			'pageTitle' => 'Registrar Ponente',
+			'alerts' => $alerts ?? []
 		]);
 	}
 }

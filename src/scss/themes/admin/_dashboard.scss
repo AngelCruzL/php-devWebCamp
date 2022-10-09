@@ -32,7 +32,7 @@
 	&__nav {
 	}
 
-	&__form {
+	&__form-header {
 		display: flex;
 		justify-content: center;
 	}
@@ -101,6 +101,7 @@
 		@include m.respond(tablet) {
 			display: flex;
 			justify-content: flex-end;
+			margin-block-end: 5rem;
 		}
 	}
 
@@ -112,5 +113,17 @@
 		@include m.respond(tablet) {
 			inline-size: auto;
 		}
+	}
+
+	&__container {
+		@include m.shadow;
+		padding: 2rem;
+		border-radius: 1rem;
+		background-color: v.$colorWhite;
+	}
+
+	&__form {
+		@extend .dashboard__container;
+		@include m.container-md;
 	}
 }
