@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS devwebcamp;
 USE devwebcamp;
 
 CREATE TABLE IF NOT EXISTS users (
-	id INT AUTO_INCREMENT,
+	id INT(11) AUTO_INCREMENT,
 	first_name VARCHAR(40) NOT NULL,
 	last_name VARCHAR(40) NOT NULL,
 	email VARCHAR(40) NOT NULL,
@@ -35,4 +35,16 @@ INSERT INTO users (
 	'$2y$10$yGtTR.0evE/4AgIiun/u1eTGJBfnTgDU7MlrZLAMmXkANsYxzSpEG',
 	1,
 	0
+);
+
+CREATE TABLE IF NOT EXISTS speakers (
+	id INT(11) AUTO_INCREMENT,
+	first_name VARCHAR(40) NOT NULL,
+	last_name VARCHAR(40) NOT NULL,
+	city VARCHAR(40),
+	country VARCHAR(20),
+	image VARCHAR(32),
+	tags VARCHAR(120),
+	social_networks TEXT,
+	PRIMARY KEY (id)
 );
