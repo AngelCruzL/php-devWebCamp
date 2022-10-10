@@ -42,9 +42,11 @@
 
 		<ul id="hours" class="hours">
 			<?php foreach ($hours as $hour) : ?>
-				<li class="hours__hour"><?php echo $hour->hour; ?></li>
+				<li data-hour-id="<?php echo $hour->id; ?>" class="hours__hour"><?php echo $hour->hour; ?></li>
 			<?php endforeach; ?>
 		</ul>
+
+		<input type="hidden" name="hour_id" value="">
 	</div>
 </fieldset>
 

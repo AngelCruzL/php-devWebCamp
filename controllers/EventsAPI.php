@@ -22,7 +22,7 @@ class EventsAPI
 		$events = EventSchedules::whereArray([
 			'day_id' => $day_id,
 			'category_id' => $category_id
-		]);
+		]) ?? [];
 
 		echo json_encode($events);
 	}
