@@ -39,18 +39,18 @@ class Event extends ActiveRecord
 
 	public function validateEvent()
 	{
-		if (empty($this->name)) self::$alerts['error'][] = 'El nombre es obligatorio.';
-		if (empty($this->description)) self::$alerts['error'][] = 'La descripción es obligatoria.';
-		if (empty($this->available_places) || !filter_var($this->available_places, FILTER_VALIDATE_INT))
-			self::$alerts['error'][] = 'El campo de cupos es obligatorio.';
+		if (empty($this->name)) self::$alerts['error'][] = 'El nombre es obligatorio';
+		if (empty($this->description)) self::$alerts['error'][] = 'La descripción es obligatoria';
 		if (empty($this->category_id) || !filter_var($this->category_id, FILTER_VALIDATE_INT))
-			self::$alerts['error'][] = 'Elige una categoría.';
+			self::$alerts['error'][] = 'Elige una categoría';
 		if (empty($this->day_id) || !filter_var($this->day_id, FILTER_VALIDATE_INT))
-			self::$alerts['error'][] = 'Elige el día del evento.';
+			self::$alerts['error'][] = 'Elige el día del evento';
 		if (empty($this->hour_id) || !filter_var($this->hour_id, FILTER_VALIDATE_INT))
-			self::$alerts['error'][] = 'Elige la hora del evento.';
+			self::$alerts['error'][] = 'Elige la hora del evento';
 		if (empty($this->speaker_id) || !filter_var($this->speaker_id, FILTER_VALIDATE_INT))
-			self::$alerts['error'][] = 'Elige un ponente.';
+			self::$alerts['error'][] = 'Elige un ponente';
+		if (empty($this->available_places) || !filter_var($this->available_places, FILTER_VALIDATE_INT))
+			self::$alerts['error'][] = 'El campo de cupos es obligatorio';
 
 		return self::$alerts;
 	}
