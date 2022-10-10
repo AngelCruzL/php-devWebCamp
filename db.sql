@@ -271,3 +271,23 @@ CREATE TABLE IF NOT EXISTS events (
 	FOREIGN KEY (hour_id) REFERENCES hours(id),
 	FOREIGN KEY (speaker_id) REFERENCES speakers(id)
 );
+
+INSERT INTO events (
+	id,
+	name,
+	description,
+	available_places,
+	category_id,
+	day_id,
+	hour_id,
+	speaker_id
+) VALUES (
+	1,
+	'¿Qué es el desarrollo web?',
+	'En esta conferencia aprenderás qué es el desarrollo web, qué lenguajes de programación se utilizan y cómo puedes iniciar tu carrera como desarrollador web.',
+	100,
+	1,
+	1,
+	1,
+	1
+);
