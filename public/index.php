@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\AuthController;
 use Controllers\DashboardController;
+use Controllers\EventsAPI;
 use Controllers\SpeakersController;
 use Controllers\EventsController;
 use Controllers\RegisteredController;
@@ -27,6 +28,8 @@ $router->post('/restablecer', [AuthController::class, 'resetPassword']);
 
 $router->get('/mensaje', [AuthController::class, 'message']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmAccount']);
+
+$router->get('/api/horarios-eventos', [EventsAPI::class, 'index']);
 
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 

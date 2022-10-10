@@ -237,6 +237,21 @@ class ActiveRecord
 		return array_shift($result);
 	}
 
+	public static function whereArray($array = [])
+	{
+		$query = "SELECT * FROM " . static::$table . " WHERE ";
+		foreach ($array as $key => $value) {
+			if ($key !== array_key_last($array)) {
+				$query .= "${key} = '${value}' AND ";
+			} else {
+				$query .= "${key} = '${value}';";
+			}
+		}
+		$result = self::sqlStatement($query);
+
+		return array_shift($result);
+	}
+
 	/**
 	 * It returns the total number of records in the table
 	 *
