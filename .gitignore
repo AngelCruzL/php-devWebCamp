@@ -11,6 +11,25 @@ images
 package-lock.json
 yarn.lock
 *.log
-public/img
-
 /vendor/
+
+# Ignore the build img directory, except for the test images from the db.sql script
+public/img/speakers/*
+!public/img/speakers/6764a74ccf2b4b5b74e333016c13388a.*
+!public/img/speakers/6497c66bcc464e26871c046dd5bb86c8.*
+!public/img/speakers/55c7866df31370ec3299eed6eb63daa1.*
+!public/img/speakers/de6e3fa0cde8402de4c28e6be0903ada.*
+!public/img/speakers/cec8c9d7bcb4c19e87d1164bce8fe176.*
+!public/img/speakers/5332118b8d7690a1b992431802eafab1.*
+!public/img/speakers/90956ece4adbd9f9ccb8f4ae80dc1537.*
+!public/img/speakers/9886ffc0d31e4c20a04acc1464630527.*
+!public/img/speakers/d697f6c454c36252d70abacd7599566c.*
+!public/img/speakers/414ffd61380bbf0e9f45cbde4d0cbb7f.*
+!public/img/speakers/c8b3a77bce7a6efb6e6872db67cfa553.*
+!public/img/speakers/6eac63d88743bbb9ee0bfd8c60cf4186.*
+!public/img/speakers/e481bca0c512f5b4d8f76ccea2548f0d.*
+!public/img/speakers/6727e8ee7f6c642026247fe0556d866d.*
+!public/img/speakers/40e01f5c023c7e74c9c372a8126edd97.*
+!public/img/speakers/6d4629dacbed2e4f5a344282ec2f4f76.*
+!public/img/speakers/2a41a781d8ae8f0f7a1969c766276b08.*
+!public/img/speakers/222dc6502643afa2f4a55acaecd93221.*
