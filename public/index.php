@@ -38,6 +38,11 @@ $router->post('/admin/ponentes/editar', [SpeakersController::class, 'editSpeaker
 $router->post('/admin/ponentes/eliminar', [SpeakersController::class, 'deleteSpeaker']);
 
 $router->get('/admin/eventos', [EventsController::class, 'index']);
+$router->get('/admin/eventos/crear', [EventsController::class, 'createEvent']);
+$router->post('/admin/eventos/crear', [EventsController::class, 'createEvent']);
+$router->get('/admin/eventos/editar', [EventsController::class, 'editEvent']);
+$router->post('/admin/eventos/editar', [EventsController::class, 'editEvent']);
+$router->post('/admin/eventos/eliminar', [EventsController::class, 'deleteEvent']);
 
 $router->get('/admin/registrados', [RegisteredController::class, 'index']);
 
