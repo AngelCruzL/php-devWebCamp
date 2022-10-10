@@ -20,5 +20,10 @@
 			background-color: v.$colorPrimary;
 			color: v.$colorWhite;
 		}
+
+		&--selected {
+			background-color: v.$colorPrimary;
+			color: v.$colorWhite;
+		}
 	}
 }

@@ -37,6 +37,11 @@
 	}
 
 	function selectHour(e) {
+		const $prevSelectedHour = document.querySelector('.hours__hour--selected');
+		if ($prevSelectedHour)
+			$prevSelectedHour.classList.remove('hours__hour--selected');
+
+		e.target.classList.add('hours__hour--selected');
 		$inputHiddenHour.value = e.target.dataset.hourId;
 	}
 })();
