@@ -57,12 +57,27 @@ class Pagination
 		return $html;
 	}
 
+	public function show_number_of_pages()
+	{
+		$html = '';
+		for ($i = 1; $i <= $this->total_pages(); $i++) {
+			if ($i === $this->current_page) {
+				$html .= "<span class=\"pagination__link pagination__link--current\">${i}</span>";
+			} else {
+				$html .= "<a class=\"pagination__link pagination__link--number\" href=\"?page={$i}\">${i}</a>";
+			}
+		}
+
+		return $html;
+	}
+
 	public function pagination()
 	{
 		$html = '';
 		if ($this->total_registers > 1) {
 			$html .= '<div class="pagination">';
 			$html .= $this->go_to_previous_page();
+			$html .= $this->show_number_of_pages();
 			$html .= $this->go_to_next_page();
 			$html .= '</div>';
 		}

@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-block: 5rem 3rem;
+
+	@include m.respond(tablet) {
+		justify-content: flex-end;
+	}
+
+	&__link {
+		color: v.$colorPrimary;
+		font-size: 1.6rem;
+
+		&--text {
+			padding: 1rem;
+			border: 1px solid v.$colorPrimary;
+			border-radius: 0.5rem;
+
+			&:hover {
+				background-color: v.$colorPrimary;
+				color: v.$colorWhite;
+			}
+		}
+
+		&--number {
+			display: none;
+			font-weight: v.$fontWeightBold;
+
+			@include m.respond(tablet) {
+				display: inline;
+			}
+		}
+
+		&--current {
+			display: none;
+			color: v.$colorGrey;
+			font-weight: v.$fontWeightBold;
+
+			@include m.respond(tablet) {
+				display: inline;
+			}
+		}
+	}
+}
