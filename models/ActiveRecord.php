@@ -218,4 +218,18 @@ class ActiveRecord
 
 		return array_shift($result);
 	}
+
+	/**
+	 * It returns the total number of records in the table
+	 *
+	 * @return The number of rows in the table.
+	 */
+	public static function total()
+	{
+		$query = "SELECT COUNT(*) FROM " . static::$table . ";";
+		$result = self::$db->query($query);
+		$total = $result->fetch_array();
+
+		return array_shift($total);
+	}
 }
