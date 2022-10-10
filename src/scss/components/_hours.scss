@@ -25,5 +25,17 @@
 			background-color: v.$colorPrimary;
 			color: v.$colorWhite;
 		}
+
+		&--disabled {
+			border: 1px solid v.$colorGrey;
+			color: v.$colorGrey;
+			opacity: 0.5;
+
+			&:hover {
+				cursor: not-allowed;
+				background-color: transparent;
+				color: v.$colorGrey;
+			}
+		}
 	}
 }

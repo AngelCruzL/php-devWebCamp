@@ -249,7 +249,7 @@ class ActiveRecord
 		}
 		$result = self::sqlStatement($query);
 
-		return array_shift($result);
+		return $result;
 	}
 
 	/**
