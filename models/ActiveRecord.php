@@ -165,9 +165,9 @@ class ActiveRecord
 	 *
 	 * @return An array of objects.
 	 */
-	public static function all()
+	public static function all($sort_order = 'DESC')
 	{
-		$query = "SELECT * FROM " . static::$table . " ORDER BY id DESC;";
+		$query = "SELECT * FROM " . static::$table . " ORDER BY id ${sort_order};";
 		$result = self::sqlStatement($query);
 
 		return $result;
