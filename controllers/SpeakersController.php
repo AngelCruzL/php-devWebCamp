@@ -25,7 +25,8 @@ class SpeakersController
 
 		$router->render('admin/speakers/index', [
 			'pageTitle' => 'Ponentes / Conferencistas',
-			'speakers' => $speakers
+			'speakers' => $speakers,
+			'pagination' => $pagination->pagination()
 		]);
 	}
 

@@ -51,3 +51,5 @@
 		</table>
 	<?php endif; ?>
 </div>
+
+<?php echo $pagination; ?>
