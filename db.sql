@@ -230,3 +230,28 @@ CREATE TABLE IF NOT EXISTS categories (
 
 INSERT INTO categories (id, name)
 VALUES (1, 'Conferencias'), (2, 'Workshops');
+
+CREATE TABLE IF NOT EXISTS days (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(15) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+INSERT INTO days (id, name)
+VALUES (1, 'Viernes'), (2, 'Sábado');
+
+CREATE TABLE IF NOT EXISTS hours (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	hour VARCHAR(13) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+INSERT INTO hours (id, hour) VALUES
+(1, '10:00 - 10:55'),
+(2, '11:00 - 11:55'),
+(3, '12:00 - 12:55'),
+(4, '13:00 - 13:55'),
+(5, '16:00 - 16:55'),
+(6, '17:00 - 17:55'),
+(7, '18:00 - 18:55'),
+(8, '19:00 - 19:55');
