@@ -20,8 +20,9 @@ class SpeakersController
 		$total_registers = Speaker::total();
 
 		$pagination = new Pagination($current_page, $registers_per_page, $total_registers);
+		if ($pagination->total_pages() < $current_page) header('Location: /admin/ponentes?page=1');
 
-		$speakers = Speaker::all();
+		$speakers = Speaker::paginate($registers_per_page, $pagination->offset());
 
 		$router->render('admin/speakers/index', [
 			'pageTitle' => 'Ponentes / Conferencistas',
