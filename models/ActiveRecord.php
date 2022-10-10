@@ -204,6 +204,24 @@ class ActiveRecord
 	}
 
 	/**
+	 * It returns a result set of all the records in the database table, ordered by the id field in
+	 * descending order, and limited to the number of registers per page, and offset by the number of
+	 * registers per page times the current page number
+	 *
+	 * @param registers_per_page The number of registers you want to show per page.
+	 * @param offset The offset is the number of registers to skip.
+	 *
+	 * @return An array of objects.
+	 */
+	public static function paginate($registers_per_page, $offset)
+	{
+		$query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT ${registers_per_page} OFFSET ${offset};";
+		$result = self::sqlStatement($query);
+
+		return $result;
+	}
+
+	/**
 	 * It takes a column name and a value, and returns the first row that matches the column and value
 	 *
 	 * @param column The column name to search for.
