@@ -29,16 +29,18 @@
 			<?php foreach ($days as $day) : ?>
 				<div>
 					<label for="<?php echo strtolower($day->name); ?>"><?php echo $day->name; ?></label>
-					<input type="radio" name="day" id="<?php echo strtolower($day->name); ?>" value="<?php echo $day->name; ?>">
+					<input type="radio" name="day" id="<?php echo strtolower($day->name); ?>" value="<?php echo $day->id; ?>">
 				</div>
 			<?php endforeach; ?>
 		</div>
+
+		<input type="hidden" name="day_id" value="">
 	</div>
 
 	<div id="hours" class="form__field">
 		<label class="form__label">Selecciona la hora</label>
 
-		<ul class="hours">
+		<ul id="hours" class="hours">
 			<?php foreach ($hours as $hour) : ?>
 				<li class="hours__hour"><?php echo $hour->hour; ?></li>
 			<?php endforeach; ?>
