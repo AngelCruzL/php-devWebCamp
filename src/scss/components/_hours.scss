@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.hours {
+	@include m.reset-list;
+	@include m.grid(1, 1rem);
+	@include m.respond(tablet) {
+		@include m.grid(2, 1rem);
+	}
+
+	&__hour {
+		padding: 1rem;
+		border: 1px solid v.$colorPrimary;
+		border-radius: 1rem;
+		color: v.$colorPrimary;
+		text-align: center;
+
+		&:hover {
+			cursor: pointer;
+			background-color: v.$colorPrimary;
+			color: v.$colorWhite;
+		}
+	}
+}
