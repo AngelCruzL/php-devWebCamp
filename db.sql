@@ -255,3 +255,19 @@ INSERT INTO hours (id, hour) VALUES
 (6, '17:00 - 17:55'),
 (7, '18:00 - 18:55'),
 (8, '19:00 - 19:55');
+
+CREATE TABLE IF NOT EXISTS events (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(120) NOT NULL,
+	description TEXT NOT NULL,
+	available_places INT(11) NOT NULL,
+	category_id INT(11) NOT NULL,
+	day_id INT(11) NOT NULL,
+	hour_id INT(11) NOT NULL,
+	speaker_id INT(11) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (category_id) REFERENCES categories(id),
+	FOREIGN KEY (day_id) REFERENCES days(id),
+	FOREIGN KEY (hour_id) REFERENCES hours(id),
+	FOREIGN KEY (speaker_id) REFERENCES speakers(id)
+);
