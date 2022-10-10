@@ -221,3 +221,12 @@ INSERT INTO speakers (
 	'PHP,Laravel,Flutter,React Native',
 	'{\"facebook\":\"https://facebook.com/C%C3%B3digo-Con-Juan-103341632130628\",\"twitter\":\"https://twitter.com/codigoconjuan\",\"youtube\":\"https://youtube.com/codigoconjuan\",\"instagram\":\"\",\"tiktok\":\"\",\"github\":\"\"}'
 );
+
+CREATE TABLE IF NOT EXISTS categories (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(45) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+INSERT INTO categories (id, name)
+VALUES (1, 'Conferencias'), (2, 'Workshops');
