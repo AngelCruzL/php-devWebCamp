@@ -8,29 +8,29 @@
 			</p>
 		</div>
 
-		<nav class="socialMenu">
-			<a class="socialMenu__link" rel="noopener noreferrer" target="_blank" href="https://facebook.com/">
-				<span class="socialMenu__hide">Facebook</span>
+		<nav class="social_menu">
+			<a class="social_menu__link" rel="noopener noreferrer" target="_blank" href="https://facebook.com/">
+				<span class="social_menu__hide">Facebook</span>
 			</a>
 
-			<a class="socialMenu__link" rel="noopener noreferrer" target="_blank" href="https://twitter.com/">
-				<span class="socialMenu__hide">Twitter</span>
+			<a class="social_menu__link" rel="noopener noreferrer" target="_blank" href="https://twitter.com/">
+				<span class="social_menu__hide">Twitter</span>
 			</a>
 
-			<a class="socialMenu__link" rel="noopener noreferrer" target="_blank" href="https://youtube.com/">
-				<span class="socialMenu__hide">YouTube</span>
+			<a class="social_menu__link" rel="noopener noreferrer" target="_blank" href="https://youtube.com/">
+				<span class="social_menu__hide">YouTube</span>
 			</a>
 
-			<a class="socialMenu__link" rel="noopener noreferrer" target="_blank" href="https://instagram.com/">
-				<span class="socialMenu__hide">Instagram</span>
+			<a class="social_menu__link" rel="noopener noreferrer" target="_blank" href="https://instagram.com/">
+				<span class="social_menu__hide">Instagram</span>
 			</a>
 
-			<a class="socialMenu__link" rel="noopener noreferrer" target="_blank" href="https://tiktok.com/">
-				<span class="socialMenu__hide">TikTok</span>
+			<a class="social_menu__link" rel="noopener noreferrer" target="_blank" href="https://tiktok.com/">
+				<span class="social_menu__hide">TikTok</span>
 			</a>
 
-			<a class="socialMenu__link" rel="noopener noreferrer" target="_blank" href="https://github.com/angelcruzl">
-				<span class="socialMenu__hide">GitHub</span>
+			<a class="social_menu__link" rel="noopener noreferrer" target="_blank" href="https://github.com/angelcruzl">
+				<span class="social_menu__hide">GitHub</span>
 			</a>
 		</nav>
 	</div>

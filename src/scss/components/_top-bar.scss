@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-.topBar {
+.top_bar {
 	background-color: v.$colorPrimary;
 
 	&__content {

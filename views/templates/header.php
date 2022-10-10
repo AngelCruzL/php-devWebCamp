@@ -18,10 +18,10 @@
 	</div>
 </header>
 
-<div class="topBar">
-	<div class="topBar__content">
+<div class="top_bar">
+	<div class="top_bar__content">
 		<a href="/">
-			<h2 class="topBar__logo">&#60;DevWebCamp/></h2>
+			<h2 class="top_bar__logo">&#60;DevWebCamp/></h2>
 		</a>
 
 		<nav class="navbar">

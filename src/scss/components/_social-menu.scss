@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-.socialMenu {
+.social_menu {
 	@include m.social-menu(v.$colorWhite, 2rem);
 	display: flex;
 	justify-content: center;
