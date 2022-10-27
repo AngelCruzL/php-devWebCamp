@@ -22,7 +22,8 @@ class Pagination
 
 	public function total_pages()
 	{
-		return ceil($this->total_registers / $this->registers_per_page);
+		$total_pages = ceil($this->total_registers / $this->registers_per_page);
+		return $total_pages == 0 ? 1 : $total_pages;
 	}
 
 	public function previous_page()
