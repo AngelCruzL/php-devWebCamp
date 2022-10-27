@@ -222,6 +222,23 @@ class ActiveRecord
 	}
 
 	/**
+	 * It takes a column name and an order (ascending or descending) and returns the results of a query
+	 * that orders the results by the column name in the order specified
+	 *
+	 * @param column The column you want to order by.
+	 * @param order The column you want to order by
+	 *
+	 * @return The result of the query.
+	 */
+	public static function order($column, $order)
+	{
+		$query = "SELECT * FROM " . static::$table . " ORDER BY ${column} ${order};";
+		$result = self::sqlStatement($query);
+
+		return $result;
+	}
+
+	/**
 	 * It takes a column name and a value, and returns the first row that matches the column and value
 	 *
 	 * @param column The column name to search for.
@@ -237,6 +254,14 @@ class ActiveRecord
 		return array_shift($result);
 	}
 
+	/**
+	 * It takes an array of key value pairs and returns a query string that can be used to query the
+	 * database
+	 *
+	 * @param array The array of key-value pairs to be used in the WHERE clause.
+	 *
+	 * @return An array of objects.
+	 */
 	public static function whereArray($array = [])
 	{
 		$query = "SELECT * FROM " . static::$table . " WHERE ";
