@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.packs {
+	&__grid {
+		@include m.container;
+		@include m.grid(1, 3rem);
+
+		@include m.respond(tablet) {
+			@include m.grid(3, 3rem);
+			// align-items: flex-start;
+		}
+	}
+}
+
+.pack {
+	@include m.card;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	&:nth-child(2) {
+		order: -1;
+
+		@include m.respond(tablet) {
+			order: 0;
+		}
+	}
+
+	&__list {
+		@include m.reset-list;
+		line-height: 2;
+	}
+
+	&__price {
+		margin-block: 3rem 0;
+		color: v.$colorPrimary;
+		font-size: 6rem;
+		font-weight: v.$fontWeightBlack;
+		text-align: center;
+	}
+}
