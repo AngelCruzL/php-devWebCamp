@@ -32,6 +32,7 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirmAccount']);
 
 $router->get('/api/horarios-eventos', [EventsAPI::class, 'index']);
 $router->get('/api/ponentes', [SpeakersAPI::class, 'index']);
+$router->get('/api/ponente', [SpeakersAPI::class, 'getSpeaker']);
 
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 
