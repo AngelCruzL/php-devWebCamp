@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.speaker-list {
+	@include m.reset-list;
+	@include m.grid(1, 1rem);
+
+	&__speaker {
+		padding: 1rem;
+		border: 1px solid v.$colorPrimary;
+		border-radius: 1rem;
+		color: v.$colorPrimary;
+		text-align: center;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&.is-selected {
+			background-color: v.$colorPrimary;
+			color: v.$colorWhite;
+		}
+	}
+}

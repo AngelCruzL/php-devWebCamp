@@ -55,7 +55,10 @@
 
 	<div class="form__field">
 		<label for="speaker" class="form__label">Ponente</label>
-		<input type="text" id="speaker" name="speaker_id" class="form__input" placeholder="Buscar Ponente">
+		<input type="text" id="speaker" class="form__input" placeholder="Buscar Ponente">
+
+		<ul id="speaker-list" class="speaker-list"></ul>
+		<input type="hidden" name="speaker_id" value="">
 	</div>
 
 	<div class="form__field">

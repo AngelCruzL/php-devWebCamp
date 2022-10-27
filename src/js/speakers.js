@@ -2,6 +2,8 @@
 	const $speakersInput = document.querySelector('#speaker');
 
 	if ($speakersInput) {
+		const $speakerList = document.querySelector('#speaker-list');
+		const $speakerHiddenInput = document.querySelector('[name="speaker_id"]');
 		let speakers = [];
 		let speakersFiltered = [];
 
@@ -36,9 +38,48 @@
 						return speaker;
 					}
 				});
-
-				console.log(speakersFiltered);
+			} else {
+				speakersFiltered = [];
 			}
+
+			showSpeakers();
+		}
+
+		function showSpeakers() {
+			while ($speakerList.firstChild) {
+				$speakerList.removeChild($speakerList.firstChild);
+			}
+
+			if (speakersFiltered.length > 0) {
+				speakersFiltered.forEach(speaker => {
+					const $speaker = document.createElement('li');
+					$speaker.classList.add('speaker-list__speaker');
+					$speaker.dataset.speakerId = speaker.id;
+					$speaker.textContent = speaker.name;
+					$speaker.onclick = selectSpeaker;
+
+					$speakerList.appendChild($speaker);
+				});
+			} else {
+				$speakerList.insertAdjacentHTML(
+					'beforeend',
+					`<p class='speaker-list__no-result'>No hay resultados para tu búsqueda</p>`
+				);
+			}
+		}
+
+		function selectSpeaker(e) {
+			const $speaker = e.target;
+
+			const $previousSelectedSpeaker = document.querySelector(
+				'.speaker-list__speaker.is-selected'
+			);
+			if ($previousSelectedSpeaker)
+				$previousSelectedSpeaker.classList.remove('is-selected');
+
+			$speaker.classList.add('is-selected');
+
+			$speakerHiddenInput.value = $speaker.dataset.speakerId;
 		}
 	}
 })();
