@@ -43,6 +43,8 @@ class EventsController
 
 	public static function createEvent(Router $router)
 	{
+		if (!is_admin()) header('Location: /login');
+
 		$categories = Category::all('ASC');
 		$days = Day::all('ASC');
 		$hours = Hour::all('ASC');
@@ -70,6 +72,8 @@ class EventsController
 
 	public static function editEvent(Router $router)
 	{
+		if (!is_admin()) header('Location: /login');
+
 		$id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
 		if (!$id) header('Location: /admin/eventos');
 
@@ -100,7 +104,16 @@ class EventsController
 		]);
 	}
 
-	public static function deleteEvent(Router $router)
+	public static function deleteEvent()
 	{
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (!is_admin()) header('Location: /login');
+
+			$event = Event::find($_POST['id']);
+			if (!isset($event)) header('Location: /admin/eventos');
+
+			$result = $event->delete();
+			if ($result) header('Location: /admin/eventos');
+		}
 	}
 }

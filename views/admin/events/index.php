@@ -47,7 +47,7 @@
 								Editar
 							</a>
 
-							<form action="/admin/ponentes/eliminar" method="POST" class="table__form">
+							<form action="/admin/eventos/eliminar" method="POST" class="table__form">
 								<input type="hidden" name="id" value="<?php echo $event->id; ?>">
 								<button class="table__action table__action--delete" type="submit">
 									<i class="fa-solid fa-circle-xmark"></i>
