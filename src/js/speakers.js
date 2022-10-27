@@ -11,12 +11,32 @@
 
 		$speakersInput.addEventListener('input', searchSpeakers);
 
+		if ($speakerHiddenInput.value) {
+			(async () => {
+				const speaker = await getSpeakerById($speakerHiddenInput.value);
+				const { first_name, last_name } = speaker;
+
+				$speakerList.insertAdjacentHTML(
+					'beforeend',
+					`<li class="speaker-list__speaker is-selected">${first_name} ${last_name}</li>`
+				);
+			})();
+		}
+
 		async function getSpeakers() {
 			const url = `/api/ponentes`;
 			const response = await fetch(url);
 			const data = await response.json();
 
 			formatSpeakers(data);
+		}
+
+		async function getSpeakerById(id) {
+			const url = `/api/ponente?id=${id}`;
+			const response = await fetch(url);
+			const data = await response.json();
+
+			return data;
 		}
 
 		function formatSpeakers(speakersList) {
