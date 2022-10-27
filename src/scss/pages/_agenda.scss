@@ -1,0 +1,78 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.agenda {
+	@include m.container;
+	padding-block: 5rem;
+}
+
+.events {
+	$modifier: &;
+
+	&__heading {
+		margin-block: 5rem;
+		color: v.$colorPrimary;
+		font-size: clamp(2.4rem, -0.8rem + 8vw, 6rem);
+		text-align: left;
+	}
+
+	&__date {
+		margin-block: 3rem 1rem;
+		color: v.$colorGrey;
+	}
+
+	&--workshops {
+		#{$modifier}__heading {
+			color: v.$colorSecondary;
+		}
+	}
+}
+
+.event {
+	&__hour {
+		font-weight: v.$fontWeightBold;
+	}
+
+	&__information {
+		padding: 2rem;
+		border-radius: 1rem;
+		background-color: v.$colorPrimary;
+		color: v.$colorWhite;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: darken(v.$colorPrimary, 10%);
+		}
+	}
+
+	&__introduction {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		font-size: 1.6rem;
+
+		@include m.respond(tablet) {
+			-webkit-line-clamp: 2;
+		}
+	}
+
+	&__author {
+		&-info {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 2rem;
+		}
+
+		&-image {
+			inline-size: 5rem;
+			border-radius: 50%;
+			background-color: v.$colorWhite;
+		}
+
+		&-name {
+			font-weight: v.$fontWeightBold;
+		}
+	}
+}

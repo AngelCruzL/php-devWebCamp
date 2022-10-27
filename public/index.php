@@ -58,6 +58,6 @@ $router->get('/admin/regalos', [GiftController::class, 'index']);
 $router->get('/', [PublicPagesController::class, 'index']);
 $router->get('/devwebcamp', [PublicPagesController::class, 'events']);
 $router->get('/paquetes', [PublicPagesController::class, 'packs']);
-$router->get('/workshops-conferencias', [PublicPagesController::class, 'conferences']);
+$router->get('/workshops-conferencias', [PublicPagesController::class, 'agenda']);
 
 $router->checkRoutes();
