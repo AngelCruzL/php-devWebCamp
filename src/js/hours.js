@@ -2,15 +2,29 @@
 	const $hours = document.querySelector('#hours');
 	if (!$hours) return;
 
-	const search = {
-		category_id: '',
-		day: '',
-	};
-
 	const $days = document.querySelectorAll('[name="day"]');
 	const $category = document.querySelector('[name="category_id"]');
 	const $inputHiddenDay = document.querySelector('[name="day_id"]');
 	const $inputHiddenHour = document.querySelector('[name="hour_id"]');
+
+	const search = {
+		category_id: +$category.value || '',
+		day: +$inputHiddenDay.value || '',
+	};
+
+	if (!Object.values(search).includes('')) {
+		(async () => {
+			await searchEvents();
+
+			const id = $inputHiddenHour.value;
+			const $selectedHour = document.querySelector(`[data-hour-id="${id}"]`);
+
+			$selectedHour.classList.remove('hours__hour--disabled');
+			$selectedHour.classList.add('hours__hour--selected');
+
+			$selectedHour.onclick = selectHour;
+		})();
+	}
 
 	$category.addEventListener('change', searchTerm);
 	$days.forEach($day => $day.addEventListener('change', searchTerm));

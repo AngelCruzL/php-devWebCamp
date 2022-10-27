@@ -70,6 +70,34 @@ class EventsController
 
 	public static function editEvent(Router $router)
 	{
+		$id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+		if (!$id) header('Location: /admin/eventos');
+
+		$categories = Category::all('ASC');
+		$days = Day::all('ASC');
+		$hours = Hour::all('ASC');
+
+		$event = Event::find($id);
+		if (!$event) header('Location: /admin/eventos');
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$event->sync($_POST);
+			$alerts = $event->validateEvent();
+
+			if (empty($alerts)) {
+				$result =	$event->save();
+				if ($result)	header('Location: /admin/eventos');
+			}
+		}
+
+		$router->render('admin/events/edit', [
+			'pageTitle' => 'Editar Evento',
+			'event' => $event,
+			'categories' => $categories,
+			'days' => $days,
+			'hours' => $hours,
+			'alerts' => $alerts ?? []
+		]);
 	}
 
 	public static function deleteEvent(Router $router)

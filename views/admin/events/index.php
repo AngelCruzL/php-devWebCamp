@@ -42,8 +42,8 @@
 						</td>
 
 						<td class="table__td--actions">
-							<a class="table__action table__action--edit" href="/admin/ponentes/editar?id=<?php echo $event->id; ?>">
-								<i class="fa-solid fa-user-pen"></i>
+							<a class="table__action table__action--edit" href="/admin/eventos/editar?id=<?php echo $event->id; ?>">
+								<i class="fa-solid fa-pencil"></i>
 								Editar
 							</a>
 
