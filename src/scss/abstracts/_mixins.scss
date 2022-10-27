@@ -76,6 +76,14 @@
 	text-align: center;
 }
 
+@mixin page-description {
+	margin-block-end: 5rem;
+	color: var.$colorGreyDark;
+	font-size: 1.8rem;
+	font-weight: var.$fontWeightLight;
+	text-align: center;
+}
+
 @mixin text-fluid($min, $max) {
 	font-size: clamp($min, 10vw - 0.8rem, $max);
 }
