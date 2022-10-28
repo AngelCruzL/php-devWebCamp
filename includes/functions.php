@@ -23,7 +23,7 @@ function s($html): string
 
 function is_the_current_page($path): bool
 {
-	return str_contains($_SERVER['PATH_INFO'], $path);
+	return str_contains($_SERVER['PATH_INFO'] ?? '/', $path);
 }
 
 function is_authenticated(): bool
