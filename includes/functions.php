@@ -44,3 +44,21 @@ function aos_animation(): void
 	$effect = array_rand($effects, 1);
 	echo ' data-aos="' . $effects[$effect] . '" ';
 }
+
+function get_ticket_type($ticketType): void
+{
+	switch ($ticketType) {
+		case 'Gratis':
+			echo ' ticket--free ';
+			return;
+		case 'Virtual':
+			echo ' ticket--online ';
+			return;
+		case 'Presencial':
+			echo ' ticket--face2face ';
+			return;
+		default:
+			echo ' ticket--free ';
+			return;
+	}
+}
