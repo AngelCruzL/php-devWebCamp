@@ -13,8 +13,11 @@ class PublicPagesController
 {
 	public static function index(Router $router)
 	{
+		$eventsFormatted = self::formatEvents();
+
 		$router->render('pages/index', [
-			'pageTitle' => 'Inicio'
+			'pageTitle' => 'Inicio',
+			'events' => $eventsFormatted,
 		]);
 	}
 
@@ -33,6 +36,16 @@ class PublicPagesController
 	}
 
 	public static function agenda(Router $router)
+	{
+		$eventsFormatted = self::formatEvents();
+
+		$router->render('pages/agenda', [
+			'pageTitle' => 'Conferencias y Workshops',
+			'events' => $eventsFormatted
+		]);
+	}
+
+	private static function formatEvents(): array
 	{
 		$events = Event::order('hour_id', 'ASC');
 		$eventsFormatted = [];
@@ -56,9 +69,6 @@ class PublicPagesController
 				$eventsFormatted['conferences_day2'][] = $event;
 		}
 
-		$router->render('pages/agenda', [
-			'pageTitle' => 'Conferencias y Workshops',
-			'events' => $eventsFormatted
-		]);
+		return $eventsFormatted;
 	}
 }
