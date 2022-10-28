@@ -10,7 +10,7 @@
 			<picture>
 				<source srcset="img/speakers/<?php echo $event->speaker->image; ?>.webp" type="image/webp">
 				<source srcset="img/speakers/<?php echo $event->speaker->image; ?>.png" type="image/png">
-				<img src="img/speakers/<?php echo $event->speaker->image; ?>.png" alt="<?php echo $event->speaker->name; ?>" class="event__author-image" loading="lazy">
+				<img src="img/speakers/<?php echo $event->speaker->image; ?>.png" alt="<?php echo $event->speaker->first_name; ?>" class="event__author-image" loading="lazy">
 			</picture>
 
 			<p class="event__author-name">

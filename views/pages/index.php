@@ -34,7 +34,7 @@
 				<picture>
 					<source srcset="img/speakers/<?php echo $speaker->image; ?>.webp" type="image/webp">
 					<source srcset="img/speakers/<?php echo $speaker->image; ?>.png" type="image/png">
-					<img src="img/speakers/<?php echo $speaker->image; ?>.png" alt="<?php echo $speaker->name; ?>" class="speaker__image" loading="lazy">
+					<img src="img/speakers/<?php echo $speaker->image; ?>.png" alt="<?php echo $speaker->first_name; ?>" class="speaker__image" loading="lazy">
 				</picture>
 
 				<div class="speaker__information">
@@ -95,4 +95,33 @@
 	</div>
 </section>
 
-<section id="map" class="map"></section>
+<div id="map" class="map"></div>
+
+<section class="tickets">
+	<h2 class="tickets__heading">Boletos y Precios</h2>
+	<p class="tickets__description">Precios para DevWebCamp</p>
+
+	<div class="tickets__grid">
+		<div class="ticket ticket--face2face">
+			<h4 class="ticket__logo">&#60;DevWebCamp /></h4>
+			<p class="ticket__plan">Presencial</p>
+			<p class="ticket__price">$199</p>
+		</div>
+
+		<div class="ticket ticket--online">
+			<h4 class="ticket__logo">&#60;DevWebCamp /></h4>
+			<p class="ticket__plan">Virtual</p>
+			<p class="ticket__price">$49</p>
+		</div>
+
+		<div class="ticket ticket--free">
+			<h4 class="ticket__logo">&#60;DevWebCamp /></h4>
+			<p class="ticket__plan">Gratis</p>
+			<p class="ticket__price">$0</p>
+		</div>
+	</div>
+
+	<div class="ticket__link-container">
+		<a href="/paquetes" class="ticket__link">Ver paquetes</a>
+	</div>
+</section>

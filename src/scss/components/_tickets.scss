@@ -1,0 +1,91 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.tickets {
+	&__grid {
+		@include m.container-sm;
+		@include m.grid(1, 5rem);
+	}
+}
+
+.ticket {
+	position: relative;
+	margin-inline: auto;
+	padding-block: 6rem;
+	padding-inline: 8rem;
+	border-radius: 2rem;
+	inline-size: min(100% - 5rem, 65rem);
+	color: v.$colorWhite;
+
+	&::after,
+	&::before {
+		content: '';
+		position: absolute;
+		top: calc(50% - 4rem);
+		block-size: 8rem;
+		inline-size: 8rem;
+		background-color: v.$colorWhite;
+	}
+
+	&::before {
+		clip-path: circle(50% at 20% 50%);
+		left: 0;
+	}
+
+	&::after {
+		clip-path: circle(50% at 80% 50%);
+		right: 0;
+	}
+
+	&--face2face {
+		background-color: hsla(178, 100%, 39%, 1);
+		background-image: radial-gradient(
+				at 40% 20%,
+				hsla(209, 100%, 47%, 1) 0px,
+				transparent 50%
+			),
+			radial-gradient(at 80% 0%, hsla(178, 100%, 39%, 1) 0px, transparent 50%),
+			radial-gradient(at 69% 82%, hsla(209, 100%, 47%, 1) 0px, transparent 50%),
+			radial-gradient(at 26% 91%, hsla(178, 100%, 39%, 1) 0px, transparent 50%),
+			radial-gradient(at 0% 100%, hsla(209, 100%, 47%, 1) 0px, transparent 50%),
+			radial-gradient(at 27% 22%, hsla(178, 100%, 39%, 1) 0px, transparent 50%),
+			radial-gradient(at 0% 0%, hsla(209, 100%, 47%, 1) 0px, transparent 50%);
+	}
+
+	&--online {
+		background-color: v.$colorSecondary;
+	}
+
+	&--free {
+		background-color: v.$colorPrimary;
+	}
+
+	&__logo {
+		@include m.logo;
+		@include m.text-fluid(2rem, 4rem);
+		margin-block-start: unset;
+	}
+
+	&__plan {
+		margin-block: 3rem 0;
+		font-size: 2rem;
+		text-transform: uppercase;
+	}
+
+	&__price {
+		margin-block: 3rem 0;
+		font-size: 4rem;
+		font-weight: v.$fontWeightBlack;
+	}
+
+	&__link-container {
+		margin-block-start: 5rem;
+		display: flex;
+		justify-content: center;
+	}
+
+	&__link {
+		@include m.button(v.$colorPrimary, v.$colorWhite);
+		inline-size: auto;
+	}
+}
