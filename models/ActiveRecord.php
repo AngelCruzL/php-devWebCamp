@@ -277,14 +277,14 @@ class ActiveRecord
 		return $result;
 	}
 
-	/**
-	 * It returns the total number of records in the table
-	 *
-	 * @return The number of rows in the table.
-	 */
-	public static function total()
+	public static function total($column = '', $value = '')
 	{
 		$query = "SELECT COUNT(*) FROM " . static::$table . ";";
+
+		if ($column !== '' && $value !== '') {
+			$query = "SELECT COUNT(*) FROM " . static::$table . " WHERE ${column} = '${value}';";
+		}
+
 		$result = self::$db->query($query);
 		$total = $result->fetch_array();
 
