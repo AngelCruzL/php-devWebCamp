@@ -57,6 +57,7 @@ $router->get('/admin/registrados', [RegisteredController::class, 'index']);
 $router->get('/admin/regalos', [GiftController::class, 'index']);
 
 $router->get('/finalizar-registro', [RegisterController::class, 'register']);
+$router->post('/finalizar-registro/gratis', [RegisterController::class, 'freeRegister']);
 
 $router->get('/', [PublicPagesController::class, 'index']);
 $router->get('/devwebcamp', [PublicPagesController::class, 'events']);

@@ -12,6 +12,10 @@
 			</div>
 
 			<p class="pack__price">$0</p>
+
+			<form action="/finalizar-registro/gratis" method="POST">
+				<input type="submit" class="packs__submit" value="Inscripción Gratuita">
+			</form>
 		</div>
 
 		<div class="pack">

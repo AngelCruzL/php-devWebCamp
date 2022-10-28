@@ -8,16 +8,18 @@
 
 		@include m.respond(tablet) {
 			@include m.grid(3, 3rem);
-			// align-items: flex-start;
+			align-items: flex-start;
 		}
+	}
+
+	&__submit {
+		@include m.button(v.$colorPrimary, v.$colorWhite);
+		margin-block-start: 3rem;
 	}
 }
 
 .pack {
 	@include m.card;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 
 	&:nth-child(2) {
 		order: -1;
