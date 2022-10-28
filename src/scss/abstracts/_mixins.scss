@@ -98,6 +98,7 @@
 	margin-block-end: 2rem;
 	color: var.$colorWhite;
 	text-align: center;
+	white-space: nowrap;
 
 	@include respond(tablet) {
 		margin-block: unset;

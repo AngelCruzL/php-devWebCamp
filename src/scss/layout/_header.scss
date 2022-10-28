@@ -33,6 +33,14 @@
 		@include m.link;
 	}
 
+	&__form {
+		display: flex;
+	}
+
+	&__submit {
+		@extend .header__link;
+	}
+
 	&__content {
 		padding-block-start: 10rem;
 

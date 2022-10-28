@@ -18,7 +18,8 @@
 		text-transform: uppercase;
 		text-align: center;
 
-		&:hover {
+		&:hover,
+		&--active {
 			background-color: v.$colorWhite;
 			color: v.$colorPrimary;
 		}
