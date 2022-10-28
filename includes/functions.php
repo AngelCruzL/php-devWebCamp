@@ -21,19 +21,19 @@ function s($html): string
 	return htmlspecialchars($html, ENT_QUOTES, 'UTF-8');
 }
 
-function get_current_page($path): bool
+function is_the_current_page($path): bool
 {
 	return str_contains($_SERVER['PATH_INFO'], $path);
 }
 
 function is_authenticated(): bool
 {
-	session_start();
+	if (!isset($_SESSION)) session_start();
 	return isset($_SESSION['userId']) && !empty($_SESSION);
 }
 
 function is_admin(): bool
 {
-	session_start();
+	if (!isset($_SESSION)) session_start();
 	return isset($_SESSION['isAdmin']) && !empty($_SESSION['isAdmin']);
 }
