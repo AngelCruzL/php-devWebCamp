@@ -11,6 +11,12 @@ class RegisterController
 {
 	public static function register(Router $router)
 	{
+		if (!is_authenticated()) header('Location: /');
+
+		$register = Register::where('user_id', $_SESSION['userId']);
+		if (isset($register) && $register->pack_id === '3')
+			header('Location: /boleto?id=' . urlencode($register->token));
+
 		$router->render('register/create', [
 			'pageTitle' => 'Finalizar Registro'
 		]);
@@ -20,6 +26,10 @@ class RegisterController
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if (!is_authenticated()) header('Location: /login');
+
+			$register = Register::where('user_id', $_SESSION['userId']);
+			if (isset($register) && $register->pack_id === '3')
+				header('Location: /boleto?id=' . urlencode($register->token));
 
 			$token = substr(md5(uniqid(rand(), true)), 0, 8);
 
