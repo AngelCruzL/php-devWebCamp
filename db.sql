@@ -569,3 +569,25 @@ INSERT INTO events (
 	6,
 	17
 );
+
+CREATE TABLE IF NOT EXISTS packs (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(30) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+INSERT INTO packs (id, name) VALUES
+(1, 'Presencial'),
+(2, 'Virtual'),
+(3, 'Gratis');
+
+CREATE TABLE IF NOT EXISTS registers (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	pack_id INT(11) NOT NULL,
+	user_id INT(11) NOT NULL,
+	payment_id VARCHAR(30) NOT NULL,
+	token CHAR(8) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (pack_id) REFERENCES packs(id),
+	FOREIGN KEY (user_id) REFERENCES users(id)
+);
