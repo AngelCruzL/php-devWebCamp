@@ -10,6 +10,7 @@ use Controllers\EventsController;
 use Controllers\RegisteredController;
 use Controllers\GiftController;
 use Controllers\PublicPagesController;
+use Controllers\RegisterController;
 use Controllers\SpeakersAPI;
 use MVC\Router;
 
@@ -54,6 +55,8 @@ $router->post('/admin/eventos/eliminar', [EventsController::class, 'deleteEvent'
 $router->get('/admin/registrados', [RegisteredController::class, 'index']);
 
 $router->get('/admin/regalos', [GiftController::class, 'index']);
+
+$router->get('/finalizar-registro', [RegisterController::class, 'register']);
 
 $router->get('/', [PublicPagesController::class, 'index']);
 $router->get('/devwebcamp', [PublicPagesController::class, 'events']);
