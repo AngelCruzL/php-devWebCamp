@@ -94,3 +94,5 @@
 		<?php endforeach; ?>
 	</div>
 </section>
+
+<section id="map" class="map"></section>
