@@ -25,6 +25,19 @@
 		#{$modifier}__heading {
 			color: v.$colorSecondary;
 		}
+
+		.event__information {
+			background-color: v.$colorSecondary;
+
+			&:hover {
+				background-color: darken(v.$colorSecondary, 10%);
+			}
+		}
+
+		.swiper-button-next,
+		.swiper-button-prev {
+			color: rgba(v.$colorWhite, 0.5);
+		}
 	}
 
 	.swiper-button-next,
