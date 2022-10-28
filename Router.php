@@ -31,7 +31,7 @@ class Router
 		if ($controller) {
 			call_user_func($controller, $this);
 		} else {
-			echo '404 - Page not found';
+			header('Location: /404');
 		}
 	}
 

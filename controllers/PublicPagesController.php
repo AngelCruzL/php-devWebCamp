@@ -55,6 +55,13 @@ class PublicPagesController
 		]);
 	}
 
+	public static function notFound(Router $router)
+	{
+		$router->render('pages/not-found', [
+			'pageTitle' => 'Página no encontrada'
+		]);
+	}
+
 	private static function formatEvents(): array
 	{
 		$events = Event::order('hour_id', 'ASC');

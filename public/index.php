@@ -59,5 +59,6 @@ $router->get('/', [PublicPagesController::class, 'index']);
 $router->get('/devwebcamp', [PublicPagesController::class, 'events']);
 $router->get('/paquetes', [PublicPagesController::class, 'packs']);
 $router->get('/workshops-conferencias', [PublicPagesController::class, 'agenda']);
+$router->get('/404', [PublicPagesController::class, 'notFound']);
 
 $router->checkRoutes();

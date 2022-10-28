@@ -1,0 +1,12 @@
+@use '../abstracts/variables' as v;
+
+.page-404 {
+	&__container {
+		font-size: 2rem;
+		text-align: center;
+	}
+
+	&__link {
+		color: v.$colorPrimary;
+	}
+}
