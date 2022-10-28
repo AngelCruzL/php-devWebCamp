@@ -19,12 +19,15 @@ class PublicPagesController
 		$total_conferences = Event::total('category_id', 1);
 		$total_workshops = Event::total('category_id', 2);
 
+		$speakers = Speaker::all();
+
 		$router->render('pages/index', [
 			'pageTitle' => 'Inicio',
 			'events' => $eventsFormatted,
 			'total_speakers' => $total_speakers,
 			'total_conferences' => $total_conferences,
-			'total_workshops' => $total_workshops
+			'total_workshops' => $total_workshops,
+			'speakers' => $speakers
 		]);
 	}
 
