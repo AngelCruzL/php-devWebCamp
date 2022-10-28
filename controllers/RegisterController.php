@@ -22,7 +22,7 @@ class RegisterController
 		]);
 	}
 
-	public static function freeRegister(Router $router)
+	public static function freeRegister()
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if (!is_authenticated()) header('Location: /login');
@@ -45,6 +45,32 @@ class RegisterController
 
 			if ($result) {
 				header('Location: /boleto?id=' . urlencode($register->token));
+			}
+		}
+	}
+
+	public static function paidRegister()
+	{
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (!is_authenticated()) header('Location: /login');
+
+			if (empty($_POST)) {
+				echo json_encode([]);
+				return;
+			}
+
+			$data = $_POST;
+			$data['user_id'] = $_SESSION['userId'];
+			$data['token'] = substr(md5(uniqid(rand(), true)), 0, 8);
+
+			try {
+				$register = new Register($data);
+				$result = $register->save();
+				echo json_encode($result);
+			} catch (\Throwable $th) {
+				echo json_encode([
+					'result' => 'error',
+				]);
 			}
 		}
 	}
