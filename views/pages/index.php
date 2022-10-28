@@ -2,22 +2,22 @@
 
 <section class="resume">
 	<div class="resume__grid">
-		<div class="resume__block">
+		<div <?php aos_animation(); ?> class="resume__block">
 			<p class="resume__text resume__text--number"><?php echo $total_speakers; ?></p>
 			<p class="resume__text">Speakers</p>
 		</div>
 
-		<div class="resume__block">
+		<div <?php aos_animation(); ?> class="resume__block">
 			<p class="resume__text resume__text--number"><?php echo $total_conferences; ?></p>
 			<p class="resume__text">Conferencias</p>
 		</div>
 
-		<div class="resume__block">
+		<div <?php aos_animation(); ?> class="resume__block">
 			<p class="resume__text resume__text--number"><?php echo $total_workshops; ?></p>
 			<p class="resume__text">Workshops</p>
 		</div>
 
-		<div class="resume__block">
+		<div <?php aos_animation(); ?> class="resume__block">
 			<p class="resume__text resume__text--number">500</p>
 			<p class="resume__text">Asistentes</p>
 		</div>
@@ -30,7 +30,7 @@
 
 	<div class="speakers__grid">
 		<?php foreach ($speakers as $speaker) : ?>
-			<div class="speaker">
+			<div <?php aos_animation(); ?> class="speaker">
 				<picture>
 					<source srcset="img/speakers/<?php echo $speaker->image; ?>.webp" type="image/webp">
 					<source srcset="img/speakers/<?php echo $speaker->image; ?>.png" type="image/png">
@@ -102,19 +102,19 @@
 	<p class="tickets__description">Precios para DevWebCamp</p>
 
 	<div class="tickets__grid">
-		<div class="ticket ticket--face2face">
+		<div <?php aos_animation(); ?> class="ticket ticket--face2face">
 			<h4 class="ticket__logo">&#60;DevWebCamp /></h4>
 			<p class="ticket__plan">Presencial</p>
 			<p class="ticket__price">$199</p>
 		</div>
 
-		<div class="ticket ticket--online">
+		<div <?php aos_animation(); ?> class="ticket ticket--online">
 			<h4 class="ticket__logo">&#60;DevWebCamp /></h4>
 			<p class="ticket__plan">Virtual</p>
 			<p class="ticket__price">$49</p>
 		</div>
 
-		<div class="ticket ticket--free">
+		<div <?php aos_animation(); ?> class="ticket ticket--free">
 			<h4 class="ticket__logo">&#60;DevWebCamp /></h4>
 			<p class="ticket__plan">Gratis</p>
 			<p class="ticket__price">$0</p>

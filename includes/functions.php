@@ -37,3 +37,10 @@ function is_admin(): bool
 	if (!isset($_SESSION)) session_start();
 	return isset($_SESSION['isAdmin']) && !empty($_SESSION['isAdmin']);
 }
+
+function aos_animation(): void
+{
+	$effects = ['fade-up', 'fade-down', 'fade-left', 'fade-right', 'flip-left', 'flip-right', 'zoom-in', 'zoom-out', 'zoom-in-up', 'zoom-in-down'];
+	$effect = array_rand($effects, 1);
+	echo ' data-aos="' . $effects[$effect] . '" ';
+}
