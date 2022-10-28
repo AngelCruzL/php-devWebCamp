@@ -2,7 +2,9 @@
 
 namespace Controllers;
 
+use Model\Pack;
 use Model\Register;
+use Model\User;
 use MVC\Router;
 
 class RegisterController
@@ -35,5 +37,22 @@ class RegisterController
 				header('Location: /boleto?id=' . urlencode($register->token));
 			}
 		}
+	}
+
+	public static function ticket(Router $router)
+	{
+		$id = $_GET['id'];
+		if (!$id || !strlen($id) === 8) header('Location: /');
+
+		$register = Register::where('token', $id);
+		if (!$register) header('Location: /');
+
+		$register->user = User::find($register->user_id);
+		$register->pack = Pack::find($register->pack_id);
+
+		$router->render('register/ticket', [
+			'pageTitle' => 'Asistencia a DevWebCamp',
+			'register' => $register
+		]);
 	}
 }

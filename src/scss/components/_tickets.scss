@@ -88,4 +88,77 @@
 		@include m.button(v.$colorPrimary, v.$colorWhite);
 		inline-size: auto;
 	}
+
+	$modifier: &;
+	&--access {
+		inline-size: 30rem;
+		block-size: 50rem;
+		padding-block: 10rem;
+		padding-inline: 3rem;
+
+		@include m.respond(tablet) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			block-size: 30rem;
+			inline-size: 60rem;
+			padding-block: 6rem;
+			padding-inline: 8rem;
+		}
+
+		#{$modifier}__logo {
+			@include m.text-fluid(2rem, 3rem);
+			margin: 0;
+			text-align: left;
+		}
+
+		#{$modifier}__name {
+			font-size: 2.4rem;
+			font-weight: v.$fontWeightBlack;
+			text-transform: uppercase;
+		}
+
+		#{$modifier}__code {
+			position: absolute;
+			left: 0;
+			bottom: 7rem;
+			margin: 0;
+			inline-size: 100%;
+			font-size: 4rem;
+			font-weight: v.$fontWeightBold;
+			text-align: center;
+
+			@include m.respond(tablet) {
+				top: 0;
+				left: calc(100% - 8rem);
+				width: 30rem;
+				rotate: 90deg;
+				transform-origin: 0 0;
+			}
+		}
+	}
+
+	&::before {
+		clip-path: circle(50% at 50% 20%);
+		top: 0;
+		left: calc(50% - 4rem);
+
+		@include m.respond(tablet) {
+			clip-path: circle(50% at 20% 50%);
+			top: calc(50% - 4rem);
+			left: 0;
+		}
+	}
+
+	&::after {
+		clip-path: circle(50% at 50% 80%);
+		top: calc(100% - 8rem);
+		left: calc(50% - 4rem);
+
+		@include m.respond(tablet) {
+			clip-path: circle(50% at 80% 50%);
+			top: calc(50% - 4rem);
+			left: calc(100% - 8rem);
+		}
+	}
 }
