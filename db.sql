@@ -601,6 +601,7 @@ INSERT INTO gifts (id, name) VALUES
 CREATE TABLE IF NOT EXISTS registers (
 	id INT(11) NOT NULL AUTO_INCREMENT,
 	token CHAR(8) NOT NULL,
+	has_conferences TINYINT(1) NOT NULL DEFAULT 0,
 	pack_id INT(11) NOT NULL,
 	user_id INT(11) NOT NULL,
 	payment_id VARCHAR(30) NOT NULL,
