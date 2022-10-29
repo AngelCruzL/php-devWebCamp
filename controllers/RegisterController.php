@@ -92,6 +92,42 @@ class RegisterController
 		$eventsFormatted = self::formatEvents();
 		$gifts = Gift::all('ASC');
 
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (!is_authenticated()) header('Location: /login');
+
+			$events = explode(',', $_POST['events']);
+			if (empty($events)) {
+				echo json_encode(['result' => 'error']);
+				return;
+			}
+
+			$register = Register::where('user_id', $_SESSION['userId']);
+			if (!isset($register) || $register->pack_id !== '1') {
+				echo json_encode(['result' => 'error']);
+				return;
+			}
+
+			$events_array = [];
+			foreach ($events as $event_id) {
+				$event = Event::find($event_id);
+
+				if (!isset($event) || $event->available_places === '0') {
+					echo json_encode(['result' => 'error']);
+					return;
+				}
+
+				$events_array[] = $event;
+			}
+
+			foreach ($events_array as $event) {
+				$event->available_places -= 1;
+				$event->save();
+			}
+
+			echo json_encode($events_array);
+			return;
+		}
+
 		$router->render('register/agenda', [
 			'pageTitle' => 'Elige tus Workshops y Conferencias',
 			'events' => $eventsFormatted,

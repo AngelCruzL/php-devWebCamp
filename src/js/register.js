@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 		const $registerForm = document.getElementById('register');
 		$registerForm.addEventListener('submit', submitForm);
 
+		renderEvents();
+
 		function selectEvent({ target }) {
 			if (events.length < 5) {
 				target.disabled = true;
@@ -57,6 +59,11 @@ import Swal from 'sweetalert2';
 					$event.appendChild($removeBtn);
 					$registerResume.appendChild($event);
 				});
+			} else {
+				$registerResume.insertAdjacentHTML(
+					'beforeend',
+					`<p class="register__text">No hay elementos, añade hasta 5 eventos.</p>`
+				);
 			}
 		}
 
@@ -75,7 +82,7 @@ import Swal from 'sweetalert2';
 			}
 		}
 
-		function submitForm(e) {
+		async function submitForm(e) {
 			e.preventDefault();
 
 			const giftId = document.querySelector('#gift').value;
@@ -91,7 +98,18 @@ import Swal from 'sweetalert2';
 				return;
 			}
 
-			console.log({ giftId, eventsId });
+			const data = new FormData();
+			data.append('events', eventsId);
+			data.append('gift_id', giftId);
+
+			const url = '/finalizar-registro/conferencias';
+			const response = await fetch(url, {
+				method: 'POST',
+				body: data,
+			});
+			const result = await response.json();
+
+			console.log(result);
 		}
 	}
 })();
