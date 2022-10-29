@@ -20,7 +20,6 @@
 
 		<button type="button" data-id="<?php echo $event->id; ?>" class="event__add" <?php echo ($event->available_places === '0') ? 'disabled' : '' ?>>
 			<?php echo ($event->available_places === '0') ? 'Agotado' : 'Agregar - ' .  $event->available_places . ' Disponibles' ?>
-
 		</button>
 	</div>
 </div>

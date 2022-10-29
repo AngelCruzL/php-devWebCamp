@@ -6,6 +6,7 @@
 
 	@include m.respond(tablet) {
 		display: flex;
+		align-items: flex-start;
 		gap: 2rem;
 	}
 
@@ -24,16 +25,66 @@
 	}
 
 	&__heading {
-		&--conferences {
+		&--conferences,
+		&--workshops {
 			@include m.text-fluid(2rem, 5rem);
-			color: v.$colorPrimary;
 			white-space: nowrap;
 		}
+
+		&--conferences {
+			color: v.$colorPrimary;
+		}
+
+		&--workshops {
+			margin-block-start: 7rem;
+			color: v.$colorSecondary;
+		}
+	}
+
+	&__date {
+		margin-block: 3rem 0;
 	}
 }
 
 .register {
+	padding: 3rem;
+	border-radius: 1rem;
+	background-color: v.$colorGreyLight;
+
 	@include m.respond(tablet) {
 		flex: 0 0 40%;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 3rem;
+	}
+
+	&__heading {
+		margin-block: 0 3rem;
+	}
+
+	&__event {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem;
+
+		&:nth-child(even) {
+			background-color: darken(v.$colorGreyLight, 3);
+		}
+	}
+
+	&__title {
+		margin: 0;
+		font-size: 2rem;
+		font-weight: v.$fontWeightBold;
+	}
+
+	&__remove {
+		all: unset;
+		color: v.$colorRed;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
