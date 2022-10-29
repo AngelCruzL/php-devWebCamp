@@ -5,6 +5,7 @@ namespace Controllers;
 use Model\Category;
 use Model\Day;
 use Model\Event;
+use Model\EventRegister;
 use Model\Gift;
 use Model\Hour;
 use Model\Pack;
@@ -22,6 +23,9 @@ class RegisterController
 		$register = Register::where('user_id', $_SESSION['userId']);
 		if (isset($register) && $register->pack_id === '3')
 			header('Location: /boleto?id=' . urlencode($register->token));
+
+		if (isset($register) && $register->pack_id === '1')
+			header('Location: /finalizar-registro/conferencias');
 
 		$router->render('register/create', [
 			'pageTitle' => 'Finalizar Registro'
@@ -89,6 +93,8 @@ class RegisterController
 		$register = Register::where('user_id', $user_id);
 		if ($register->pack_id !== '1') header('Location: /');
 
+		if ($register->has_conferences === '1') header('Location: /boleto?id=' . urlencode($register->token));
+
 		$eventsFormatted = self::formatEvents();
 		$gifts = Gift::all('ASC');
 
@@ -112,7 +118,7 @@ class RegisterController
 				$event = Event::find($event_id);
 
 				if (!isset($event) || $event->available_places === '0') {
-					echo json_encode(['result' => 'error']);
+					echo json_encode(['result' => false]);
 					return;
 				}
 
@@ -122,9 +128,31 @@ class RegisterController
 			foreach ($events_array as $event) {
 				$event->available_places -= 1;
 				$event->save();
+
+				$data = [
+					'event_id' => (int) $event->id,
+					'register_id' => (int) $register->id,
+				];
+
+				$event_register = new EventRegister($data);
+				$event_register->save();
 			}
 
-			echo json_encode($events_array);
+			$register->sync([
+				'gift_id' => $_POST['gift_id'],
+				'has_conferences' => 1
+			]);
+			$result = $register->save();
+
+			if ($result) {
+				echo json_encode([
+					'result' => $result,
+					'token' => $register->token
+				]);
+			} else {
+				echo json_encode(['result' => false]);
+			}
+
 			return;
 		}
 

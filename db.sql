@@ -611,3 +611,12 @@ CREATE TABLE IF NOT EXISTS registers (
 	FOREIGN KEY (user_id) REFERENCES users(id),
 	FOREIGN KEY (gift_id) REFERENCES gifts(id)
 );
+
+CREATE TABLE IF NOT EXISTS events_registers (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	event_id INT(11) NOT NULL,
+	register_id INT(11) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (event_id) REFERENCES events(id),
+	FOREIGN KEY (register_id) REFERENCES registers(id)
+);

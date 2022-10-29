@@ -109,7 +109,20 @@ import Swal from 'sweetalert2';
 			});
 			const result = await response.json();
 
-			console.log(result);
+			if (result.result) {
+				Swal.fire(
+					'Registro Exitoso',
+					'Tus conferenchas han sido registradas, te esperamos en DevWebCamp',
+					'success'
+				).then(() => (location.href = `/boleto?id=${result.token}`));
+			} else {
+				Swal.fire({
+					title: 'Error',
+					text: 'Hubo un error, intenta de nuevo',
+					icon: 'error',
+					confirmButtonText: 'OK',
+				}).then(() => location.reload());
+			}
 		}
 	}
 })();
