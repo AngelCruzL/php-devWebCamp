@@ -5,6 +5,7 @@ namespace Controllers;
 use Model\Category;
 use Model\Day;
 use Model\Event;
+use Model\Gift;
 use Model\Hour;
 use Model\Pack;
 use Model\Register;
@@ -86,13 +87,15 @@ class RegisterController
 
 		$user_id = $_SESSION['userId'];
 		$register = Register::where('user_id', $user_id);
-		if ($register->id !== '1') header('Location: /');
+		if ($register->pack_id !== '1') header('Location: /');
 
 		$eventsFormatted = self::formatEvents();
+		$gifts = Gift::all('ASC');
 
 		$router->render('register/agenda', [
 			'pageTitle' => 'Elige tus Workshops y Conferencias',
-			'events' => $eventsFormatted
+			'events' => $eventsFormatted,
+			'gifts' => $gifts
 		]);
 	}
 
