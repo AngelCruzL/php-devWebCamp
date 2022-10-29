@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.events-register {
+	@include m.container;
+
+	@include m.respond(tablet) {
+		display: flex;
+		gap: 2rem;
+	}
+
+	&__list {
+		@include m.respond(tablet) {
+			flex: 0 0 60%;
+		}
+	}
+
+	&__grid {
+		@include m.grid(1, 3rem);
+
+		@include m.respond(tablet) {
+			@include m.grid(2, 3rem);
+		}
+	}
+
+	&__heading {
+		&--conferences {
+			@include m.text-fluid(2rem, 5rem);
+			color: v.$colorPrimary;
+			white-space: nowrap;
+		}
+	}
+}
+
+.register {
+	@include m.respond(tablet) {
+		flex: 0 0 40%;
+	}
+}

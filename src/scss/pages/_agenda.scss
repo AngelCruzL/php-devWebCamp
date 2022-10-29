@@ -98,4 +98,14 @@
 			font-weight: v.$fontWeightBold;
 		}
 	}
+
+	&__add {
+		@include m.button(v.$colorWhite, v.$colorBlack);
+		margin-block-start: 1rem;
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+	}
 }

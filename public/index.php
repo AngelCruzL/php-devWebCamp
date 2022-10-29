@@ -59,6 +59,7 @@ $router->get('/admin/regalos', [GiftController::class, 'index']);
 $router->get('/finalizar-registro', [RegisterController::class, 'register']);
 $router->post('/finalizar-registro/gratis', [RegisterController::class, 'freeRegister']);
 $router->post('/finalizar-registro/pagar', [RegisterController::class, 'paidRegister']);
+$router->get('/finalizar-registro/conferencias', [RegisterController::class, 'agendaRegister']);
 $router->get('/boleto', [RegisterController::class, 'ticket']);
 
 $router->get('/', [PublicPagesController::class, 'index']);

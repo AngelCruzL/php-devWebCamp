@@ -2,8 +2,13 @@
 
 namespace Controllers;
 
+use Model\Category;
+use Model\Day;
+use Model\Event;
+use Model\Hour;
 use Model\Pack;
 use Model\Register;
+use Model\Speaker;
 use Model\User;
 use MVC\Router;
 
@@ -75,6 +80,22 @@ class RegisterController
 		}
 	}
 
+	public static function agendaRegister(Router $router)
+	{
+		if (!is_authenticated()) header('Location: /login');
+
+		$user_id = $_SESSION['userId'];
+		$register = Register::where('user_id', $user_id);
+		if ($register->id !== '1') header('Location: /');
+
+		$eventsFormatted = self::formatEvents();
+
+		$router->render('register/agenda', [
+			'pageTitle' => 'Elige tus Workshops y Conferencias',
+			'events' => $eventsFormatted
+		]);
+	}
+
 	public static function ticket(Router $router)
 	{
 		$id = $_GET['id'];
@@ -90,5 +111,32 @@ class RegisterController
 			'pageTitle' => 'Asistencia a DevWebCamp',
 			'register' => $register
 		]);
+	}
+
+	private static function formatEvents(): array
+	{
+		$events = Event::order('hour_id', 'ASC');
+		$eventsFormatted = [];
+
+		foreach ($events as $event) {
+			$event->category = Category::find($event->category_id);
+			$event->day = Day::find($event->day_id);
+			$event->hour = Hour::find($event->hour_id);
+			$event->speaker = Speaker::find($event->speaker_id);
+
+			if ($event->day_id === '1' && $event->category_id === '1')
+				$eventsFormatted['workshops_day1'][] = $event;
+
+			if ($event->day_id === '2' && $event->category_id === '1')
+				$eventsFormatted['workshops_day2'][] = $event;
+
+			if ($event->day_id === '1' && $event->category_id === '2')
+				$eventsFormatted['conferences_day1'][] = $event;
+
+			if ($event->day_id === '2' && $event->category_id === '2')
+				$eventsFormatted['conferences_day2'][] = $event;
+		}
+
+		return $eventsFormatted;
 	}
 }
