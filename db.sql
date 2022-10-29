@@ -581,13 +581,32 @@ INSERT INTO packs (id, name) VALUES
 (2, 'Virtual'),
 (3, 'Gratis');
 
+CREATE TABLE IF NOT EXISTS gifts (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+INSERT INTO gifts (id, name) VALUES
+(1, 'Paquete Stickers'),
+(2, 'Camisa Mujer - Chica'),
+(3, 'Camisa Mujer - Mediana'),
+(4, 'Camisa Mujer - Grande'),
+(5, 'Camisa Mujer - XL'),
+(6, 'Camisa Hombre - Chica'),
+(7, 'Camisa Hombre - Mediana'),
+(8, 'Camisa Hombre - Grande'),
+(9, 'Camisa Hombre - XL');
+
 CREATE TABLE IF NOT EXISTS registers (
 	id INT(11) NOT NULL AUTO_INCREMENT,
+	token CHAR(8) NOT NULL,
 	pack_id INT(11) NOT NULL,
 	user_id INT(11) NOT NULL,
 	payment_id VARCHAR(30) NOT NULL,
-	token CHAR(8) NOT NULL,
+	gift_id INT(11) NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (pack_id) REFERENCES packs(id),
-	FOREIGN KEY (user_id) REFERENCES users(id)
+	FOREIGN KEY (user_id) REFERENCES users(id),
+	FOREIGN KEY (gift_id) REFERENCES gifts(id)
 );
