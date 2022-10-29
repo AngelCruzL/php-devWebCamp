@@ -89,7 +89,8 @@
 		align-self: flex-start;
 		inline-size: auto;
 
-		&--register {
+		&--register,
+		&--full {
 			inline-size: 100%;
 		}
 	}
