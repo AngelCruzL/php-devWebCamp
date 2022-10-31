@@ -225,14 +225,32 @@ class ActiveRecord
 	 * It takes a column name and an order (ascending or descending) and returns the results of a query
 	 * that orders the results by the column name in the order specified
 	 *
-	 * @param column The column you want to order by.
-	 * @param order The column you want to order by
+	 * @param column the column name to order by
+	 * @param order ASC or DESC
 	 *
 	 * @return The result of the query.
 	 */
 	public static function order($column, $order)
 	{
 		$query = "SELECT * FROM " . static::$table . " ORDER BY ${column} ${order};";
+		$result = self::sqlStatement($query);
+
+		return $result;
+	}
+
+	/**
+	 * `orderWithLimit` returns an array of objects of the class that called it, ordered by the column and
+	 * order specified, and limited to the number specified
+	 *
+	 * @param column the column name to order by
+	 * @param order ASC or DESC
+	 * @param limit the number of rows to return
+	 *
+	 * @return An array of objects.
+	 */
+	public static function orderWithLimit($column, $order, $limit)
+	{
+		$query = "SELECT * FROM " . static::$table . " ORDER BY ${column} ${order} LIMIT ${limit} ;";
 		$result = self::sqlStatement($query);
 
 		return $result;
