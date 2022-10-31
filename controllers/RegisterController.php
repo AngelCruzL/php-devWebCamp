@@ -18,14 +18,21 @@ class RegisterController
 {
 	public static function register(Router $router)
 	{
-		if (!is_authenticated()) header('Location: /');
+		if (!is_authenticated()) {
+			header('Location: /');
+			return;
+		}
 
 		$register = Register::where('user_id', $_SESSION['userId']);
-		if (isset($register) && $register->pack_id === '3')
+		if (isset($register) && ($register->pack_id === '3' || $register->pack_id === '2')) {
 			header('Location: /boleto?id=' . urlencode($register->token));
+			return;
+		}
 
-		if (isset($register) && $register->pack_id === '1')
+		if (isset($register) && $register->pack_id === '1') {
 			header('Location: /finalizar-registro/conferencias');
+			return;
+		}
 
 		$router->render('register/create', [
 			'pageTitle' => 'Finalizar Registro'
@@ -35,11 +42,16 @@ class RegisterController
 	public static function freeRegister()
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			if (!is_authenticated()) header('Location: /login');
+			if (!is_authenticated()) {
+				header('Location: /login');
+				return;
+			}
 
 			$register = Register::where('user_id', $_SESSION['userId']);
-			if (isset($register) && $register->pack_id === '3')
+			if (isset($register) && $register->pack_id === '3') {
 				header('Location: /boleto?id=' . urlencode($register->token));
+				return;
+			}
 
 			$token = substr(md5(uniqid(rand(), true)), 0, 8);
 
@@ -53,8 +65,10 @@ class RegisterController
 			$register = new Register($data);
 			$result = $register->save();
 
-			if ($result) {
-				header('Location: /boleto?id=' . urlencode($register->token));
+			if ($result) { {
+					header('Location: /boleto?id=' . urlencode($register->token));
+					return;
+				}
 			}
 		}
 	}
@@ -62,7 +76,10 @@ class RegisterController
 	public static function paidRegister()
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			if (!is_authenticated()) header('Location: /login');
+			if (!is_authenticated()) {
+				header('Location: /login');
+				return;
+			}
 
 			if (empty($_POST)) {
 				echo json_encode([]);
@@ -87,19 +104,37 @@ class RegisterController
 
 	public static function agendaRegister(Router $router)
 	{
-		if (!is_authenticated()) header('Location: /login');
+		if (!is_authenticated()) {
+			header('Location: /login');
+			return;
+		}
 
 		$user_id = $_SESSION['userId'];
 		$register = Register::where('user_id', $user_id);
-		if ($register->pack_id !== '1') header('Location: /');
 
-		if ($register->has_conferences === '1') header('Location: /boleto?id=' . urlencode($register->token));
+		if (isset($register) && $register->pack_id === '2') {
+			header('Location: /boleto?id=' . urlencode($register->token));
+			return;
+		}
+
+		if ($register->pack_id !== '1') {
+			header('Location: /');
+			return;
+		}
+
+		if ($register->has_conferences === '1' && $register->pack_id === '1') {
+			header('Location: /boleto?id=' . urlencode($register->token));
+			return;
+		}
 
 		$eventsFormatted = self::formatEvents();
 		$gifts = Gift::all('ASC');
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			if (!is_authenticated()) header('Location: /login');
+			if (!is_authenticated()) {
+				header('Location: /login');
+				return;
+			}
 
 			$events = explode(',', $_POST['events']);
 			if (empty($events)) {
@@ -166,10 +201,16 @@ class RegisterController
 	public static function ticket(Router $router)
 	{
 		$id = $_GET['id'];
-		if (!$id || !strlen($id) === 8) header('Location: /');
+		if (!$id || !strlen($id) === 8) {
+			header('Location: /');
+			return;
+		}
 
 		$register = Register::where('token', $id);
-		if (!$register) header('Location: /');
+		if (!$register) {
+			header('Location: /');
+			return;
+		}
 
 		$register->user = User::find($register->user_id);
 		$register->pack = Pack::find($register->pack_id);
