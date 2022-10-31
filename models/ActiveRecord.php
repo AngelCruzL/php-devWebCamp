@@ -295,6 +295,14 @@ class ActiveRecord
 		return $result;
 	}
 
+	/**
+	 * It returns the total number of rows in the table
+	 *
+	 * @param column The column name to search for.
+	 * @param value The value to be searched for.
+	 *
+	 * @return The number of rows in the table.
+	 */
 	public static function total($column = '', $value = '')
 	{
 		$query = "SELECT COUNT(*) FROM " . static::$table . ";";
@@ -303,6 +311,30 @@ class ActiveRecord
 			$query = "SELECT COUNT(*) FROM " . static::$table . " WHERE ${column} = '${value}';";
 		}
 
+		$result = self::$db->query($query);
+		$total = $result->fetch_array();
+
+		return array_shift($total);
+	}
+
+	/**
+	 * It takes an array of key-value pairs and returns the total number of rows in the database that match
+	 * the key-value pairs
+	 *
+	 * @param array an array of key/value pairs that will be used to build the WHERE clause of the query.
+	 *
+	 * @return The total number of rows in the table.
+	 */
+	public static function totalArray($array = [])
+	{
+		$query = "SELECT COUNT(*) FROM " . static::$table . " WHERE ";
+		foreach ($array as $key => $value) {
+			if ($key !== array_key_last($array)) {
+				$query .= "${key} = '${value}' AND ";
+			} else {
+				$query .= "${key} = '${value}';";
+			}
+		}
 		$result = self::$db->query($query);
 		$total = $result->fetch_array();
 
