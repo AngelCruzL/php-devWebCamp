@@ -200,3 +200,11 @@
 		font-weight: var.$fontWeightBlack;
 	}
 }
+
+@mixin bg-gradient($bgColor) {
+	background-image: linear-gradient(
+		to left top,
+		$bgColor,
+		lighten($bgColor, 15%)
+	);
+}

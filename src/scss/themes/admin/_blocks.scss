@@ -1,0 +1,56 @@
+@use '../../abstracts/variables' as v;
+@use '../../abstracts/mixins' as m;
+
+.blocks {
+	@include m.container;
+
+	@include m.respond(tablet) {
+		margin-block-start: 8rem;
+	}
+
+	&__grid {
+		@include m.grid(1, 3rem);
+
+		@include m.respond(desktop) {
+			@include m.grid(2, 3rem);
+		}
+	}
+}
+
+.block {
+	padding: 3rem;
+	border-radius: 1rem;
+	color: v.$colorWhite;
+
+	&:nth-child(1) {
+		@include m.bg-gradient(#f97316);
+	}
+
+	&:nth-child(2) {
+		@include m.bg-gradient(#a855f7);
+	}
+
+	&:nth-child(3) {
+		@include m.bg-gradient(#59910b);
+	}
+
+	&:nth-child(4) {
+		@include m.bg-gradient(#17769e);
+	}
+
+	&__heading {
+		margin-block: 1rem 2rem;
+		font-size: 3.6rem;
+	}
+
+	&__text {
+		margin-block: 0 0.5rem;
+
+		&--quantity {
+			margin-block: 5rem 0;
+			font-size: 6rem;
+			font-weight: v.$fontWeightBlack;
+			text-align: center;
+		}
+	}
+}
