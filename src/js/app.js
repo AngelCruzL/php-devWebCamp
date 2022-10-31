@@ -1,3 +1,4 @@
+import './gifts-chart';
 import './hours';
 import './map';
 import './register';
