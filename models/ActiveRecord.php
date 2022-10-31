@@ -189,18 +189,18 @@ class ActiveRecord
 	}
 
 	/**
-	 * This function returns the first records from the table
+	 * It returns the last record in the database
 	 *
-	 * @param limitOfRecords The number of records to return.
+	 * @param limitOfRecords The number of records you want to get.
 	 *
-	 * @return The result of the query.
+	 * @return The first record in the table.
 	 */
 	public static function get($limitOfRecords)
 	{
-		$query = "SELECT * FROM " . static::$table . " LIMIT " . $limitOfRecords . " ORDER BY id DESC;";
+		$query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT " . $limitOfRecords . ";";
 		$result = self::sqlStatement($query);
 
-		return array_shift($result);
+		return $result;
 	}
 
 	/**
