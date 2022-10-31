@@ -9,6 +9,7 @@ use Controllers\SpeakersController;
 use Controllers\EventsController;
 use Controllers\RegisteredController;
 use Controllers\GiftController;
+use Controllers\GiftsAPI;
 use Controllers\PublicPagesController;
 use Controllers\RegisterController;
 use Controllers\SpeakersAPI;
@@ -35,6 +36,7 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirmAccount']);
 $router->get('/api/horarios-eventos', [EventsAPI::class, 'index']);
 $router->get('/api/ponentes', [SpeakersAPI::class, 'index']);
 $router->get('/api/ponente', [SpeakersAPI::class, 'getSpeaker']);
+$router->get('/api/regalos', [GiftsAPI::class, 'index']);
 
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 
